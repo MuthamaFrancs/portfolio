@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Francis Musau | Portfolio</title>
 
     <!-- Tailwind CDN -->
@@ -15,354 +15,346 @@
               primary: "#5E6F4E", // Olive Green
               accent: "#F6F3EB", // Soft Ivory
               secondary: "#A5B68D", // Muted Sage
+              neutralDark: "#0f1720",
             },
           },
         },
       };
     </script>
+
+    <!-- Devicon (tech icons) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      /* subtle glow on hover for tech icons */
+      .tech {
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+      .tech:hover {
+        transform: translateY(-6px) scale(1.05);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      }
+    </style>
   </head>
 
-    <body class="bg-accent text-gray-800">
-        <!-- Navbar -->
-    <header class="fixed top-0 left-0 w-full bg-primary/90 backdrop-blur-md text-accent shadow-sm z-50">
-    <nav class="flex items-center justify-between px-6 md:px-20 py-4">
-        <!-- Logo -->
-        <div class="text-2xl font-bold tracking-wide">
-        <a href="#home" class="hover:text-secondary transition">Musau.dev</a>
-        </div>
+  <body class="bg-accent text-neutral-800 antialiased">
+    <!-- Sticky Navbar -->
+    <header
+      class="fixed w-full z-50 top-0 left-0 bg-white/60 backdrop-blur-md border-b border-gray-200"
+    >
+      <nav class="max-w-6xl mx-auto px-6 md:px-8 lg:px-12 py-3 flex items-center justify-between">
+        <a href="#home" class="font-bold text-xl text-primary">Musau.dev</a>
 
-        <!-- Desktop Menu -->
-        <ul class="hidden md:flex space-x-8 text-lg">
-        <li><a href="#about" class="hover:text-secondary transition">About</a></li>
-        <li><a href="#projects" class="hover:text-secondary transition">Projects</a></li>
-        <li><a href="#blog" class="hover:text-secondary transition">Blog</a></li>
-        <li><a href="#contact" class="hover:text-secondary transition">Contact</a></li>
+        <!-- Desktop Links -->
+        <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <li><a class="hover:text-primary" href="#about">About</a></li>
+          <li><a class="hover:text-primary" href="#projects">Projects</a></li>
+          <li><a class="hover:text-primary" href="#blog">Blog</a></li>
+          <li><a class="hover:text-primary" href="#contact">Contact</a></li>
         </ul>
 
-        <!-- Mobile Menu Button -->
-        <button id="menu-btn" class="md:hidden text-3xl focus:outline-none">
-        <i class="fa-solid fa-bars"></i>
+        <!-- Mobile toggle -->
+        <button id="menu-btn" class="md:hidden p-2" aria-label="toggle menu">
+          <svg class="w-6 h-6 text-neutral-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+               xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round"
+               stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
-    </nav>
+      </nav>
 
-    <!-- Mobile Menu -->
-    <div
-        id="mobile-menu"
-        class="hidden flex-col bg-primary text-accent text-center md:hidden space-y-4 py-6 border-t border-secondary"
-    >
-        <a href="#about" class="hover:text-secondary transition">About</a>
-        <a href="#projects" class="hover:text-secondary transition">Projects</a>
-        <a href="#blog" class="hover:text-secondary transition">Blog</a>
-        <a href="#contact" class="hover:text-secondary transition">Contact</a>
-    </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white/95 border-t border-gray-100">
+        <div class="flex flex-col px-6 py-4 gap-3">
+          <a href="#about" class="py-2 hover:text-primary">About</a>
+          <a href="#projects" class="py-2 hover:text-primary">Projects</a>
+          <a href="#blog" class="py-2 hover:text-primary">Blog</a>
+          <a href="#contact" class="py-2 hover:text-primary">Contact</a>
+        </div>
+      </div>
     </header>
 
-    <script>
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
+    <!-- HERO / ABOUT -->
+    <main class="pt-20">
+      <section id="home" class="min-h-screen flex items-center px-6 md:px-12 lg:px-20">
+        <div class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <!-- Left: Text -->
+          <div class="space-y-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-neutral-900">
+              <span class="block">Muthama <span class="text-primary">Francis</span></span>
+            </h1>
 
-    menuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-    });
-    </script>
-
-    <!-- Hero Section -->
-    <section
-        id="home" class="pt-24 min-h-screen flex flex-col md:flex-row items-center justify-between px-8 md:px-24 py-16 bg-primary text-accent"
-    >
-      <!-- Left content -->
-      <div class="md:w-1/2 space-y-6">
-        <h1 class="text-4xl md:text-5xl font-bold leading-snug">
-          Hi, I'm <span class="text-secondary">Francis Musau</span>
-        </h1>
-        <h2 class="text-2xl md:text-3xl font-semibold">
-          a
-          <span
-            id="role"
-            class="border-b-2 border-secondary text-accent transition-all duration-500"
-          >
-            Software Engineer
-          </span>
-        </h2>
-        <p class="text-lg text-accent/90 max-w-lg">
-          I build reliable, creative, and data-driven digital experiences —
-          from modern web and mobile apps to intelligent systems.
-        </p>
-
-        <!-- Contact Icons -->
-        <div class="flex space-x-6 pt-4">
-          <a
-            href="tel:+254769892579"
-            class="hover:text-secondary transition"
-            title="Call"
-            ><i class="fa-solid fa-phone text-2xl"></i
-          ></a>
-          <a
-            href="mailto:francisfrancs02@gmail.com"
-            class="hover:text-secondary transition"
-            title="Email"
-            ><i class="fa-solid fa-envelope text-2xl"></i
-          ></a>
-          <a
-            href="https://www.linkedin.com/in/francis-musau-b17690210/"
-            class="hover:text-secondary transition"
-            target="_blank"
-            title="LinkedIn"
-            ><i class="fa-brands fa-linkedin text-2xl"></i
-          ></a>
-          <a
-            href="https://github.com/MuthamaFrancs"
-            class="hover:text-secondary transition"
-            target="_blank"
-            title="GitHub"
-            ><i class="fa-brands fa-github text-2xl"></i
-          ></a>
-        </div>
-      </div>
-
-      <!-- Right side - Profile image -->
-      <div class="md:w-1/2 flex justify-center mt-10 md:mt-0">
-        <img
-          src="assets/images/profile.jpeg"
-          alt="Francis Musau"
-          class="w-60 h-60 md:w-80 md:h-80 rounded-full border-4 border-secondary shadow-lg object-cover"
-        />
-      </div>
-    </section>
-
-        <!-- About Section -->
-    <section
-    id="about"
-    class="relative min-h-screen bg-accent flex flex-col justify-center px-8 md:px-24 py-20 overflow-hidden"
-    >
-    <!-- Background Image -->
-    <div
-        class="absolute inset-0 bg-[url('assets/images/profile.jpeg')] bg-cover bg-center opacity-10"
-    ></div>
-
-    <!-- Content -->
-    <div
-        class="relative z-10 grid md:grid-cols-2 gap-12 items-center opacity-0 translate-y-6 transition-all duration-700 ease-out"
-        id="about-content"
-    >
-        <!-- Text Column -->
-        <div>
-        <h2 class="text-4xl font-bold text-primary mb-6">About Me</h2>
-        <p class="text-lg leading-relaxed text-gray-700 mb-8">
-            I’m <span class="font-semibold text-primary">Francis Musau</span>, a
-            multi-disciplinary developer with a passion for crafting creative,
-            data-informed, and user-centered software solutions.
-            <br /><br />
-            My experience spans mobile, web, and AI-driven systems — combining clean
-            design, powerful code, and measurable impact. I love learning, building,
-            and collaborating on projects that inspire growth and innovation.
-        </p>
-
-        <a
-            href="#projects"
-            class="inline-block px-6 py-3 bg-primary text-accent font-semibold rounded-full hover:bg-secondary hover:text-primary transition"
-        >
-            View My Work
-        </a>
-        </div>
-
-        <!-- Tech Stack Column -->
-        
-        <div class="flex flex-wrap gap-4 justify-center md:justify-end">
-        <span
-            class="bg-primary text-accent px-4 py-2 rounded-full font-medium shadow-sm"
-            >HTML</span
-        >
-        <span
-            class="bg-secondary text-primary px-4 py-2 rounded-full font-medium shadow-sm"
-            >CSS / Tailwind</span
-        >
-        <span
-            class="bg-primary text-accent px-4 py-2 rounded-full font-medium shadow-sm"
-            >JavaScript</span
-        >
-        <span
-            class="bg-secondary text-primary px-4 py-2 rounded-full font-medium shadow-sm"
-            >Next.js</span
-        >
-        <span
-            class="bg-primary text-accent px-4 py-2 rounded-full font-medium shadow-sm"
-            >Flutter</span
-        >
-        <span
-            class="bg-secondary text-primary px-4 py-2 rounded-full font-medium shadow-sm"
-            >Groovy & Grails</span
-        >
-        <span
-            class="bg-primary text-accent px-4 py-2 rounded-full font-medium shadow-sm"
-            >Python</span
-        >
-        <span
-            class="bg-secondary text-primary px-4 py-2 rounded-full font-medium shadow-sm"
-            >SQL</span
-        >
-        </div>
-
-    </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="bg-primary/5 py-20 px-8 md:px-24">
-    <h2 class="text-4xl font-bold text-primary mb-12 text-center">Featured Projects</h2>
-
-    <div class="grid md:grid-cols-3 gap-10">
-        <!-- Project Card 1 -->
-        <div class="bg-accent rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform duration-300">
-        <img src="assets/images/projet1.jpeg" alt="Project 1" class="h-48 w-full object-cover" />
-        <div class="p-6">
-            <h3 class="text-xl font-semibold text-primary mb-2">Orientation App</h3>
-            <p class="text-gray-700 mb-4">
-            A student onboarding platform featuring schedules, notifications, and interactive contact tools.
+            <p class="text-lg md:text-xl text-neutral-700 leading-relaxed max-w-prose">
+              I am a software developer. I am a passionate about technology, building software and solving real world problems.
+              I enjoy seeing and solving real world problems from a technological point of view. I am a self-driven and enthusiastic
+              collaborator. I am value-driven always yearning to learn and grow in this ever-evolving field of technology. I am a
+              fast learner and adaptive to dynamic workplaces. I have mastered Object Oriented Programming using Java and Mobile
+              Programming using Flutter. I am also actively growing in Java Spring Boot. I have experience in working with other
+              Programming Languages e.g JavaScript, React and PHP.
             </p>
-            <div class="flex flex-wrap gap-2 mb-4">
-            <span class="bg-primary text-accent px-3 py-1 rounded-full text-sm">Flutter</span>
-            <span class="bg-secondary text-primary px-3 py-1 rounded-full text-sm">Firebase</span>
+
+            <!-- Role + CTA -->
+            <div class="flex items-center gap-4 pt-2 flex-wrap">
+              <div class="inline-flex items-center gap-3">
+                <span class="text-sm text-gray-600">I’m</span>
+                <span id="role" class="text-sm font-medium text-primary">Software Engineer</span>
+              </div>
+
+              <a href="#projects" class="inline-block rounded-full bg-primary text-accent px-5 py-2 font-medium shadow-sm hover:opacity-95 transition">
+                View Projects
+              </a>
             </div>
-            <a href="#" class="text-primary font-semibold hover:text-secondary transition">View Project →</a>
-        </div>
-        </div>
 
-        <!-- Project Card 2 -->
-        <div class="bg-accent rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform duration-300">
-        <img src="assets/images/project2.jpeg" alt="Project 2" class="h-48 w-full object-cover" />
-        <div class="p-6">
-            <h3 class="text-xl font-semibold text-primary mb-2">Habits Tracker</h3>
-            <p class="text-gray-700 mb-4">
-            A personal productivity web app built with Groovy & Grails to help users build consistency in habits.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-4">
-            <span class="bg-primary text-accent px-3 py-1 rounded-full text-sm">Groovy</span>
-            <span class="bg-secondary text-primary px-3 py-1 rounded-full text-sm">Grails</span>
+            <!-- Tech stack -->
+            <div class="mt-6">
+              <h3 class="text-sm font-semibold text-gray-600 mb-3">Tech & Tools</h3>
+
+              <div class="flex flex-wrap gap-3">
+                <!-- Python -->
+                <div class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm">
+                  <i class="devicon-python-plain colored text-2xl"></i>
+                  <span class="text-sm font-medium">Python</span>
+                </div>
+
+                <!-- Tableau (brand-colored badge) -->
+                <div class="tech flex items-center gap-2 px-3 py-2 rounded-full shadow-sm" style="background:#E87722;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="inline-block">
+                    <rect x="3" y="3" width="3" height="3" fill="#FFFFFF"/>
+                    <rect x="7" y="3" width="3" height="3" fill="#FFFFFF"/>
+                    <rect x="11" y="3" width="3" height="3" fill="#FFFFFF"/>
+                    <rect x="3" y="7" width="3" height="3" fill="#FFFFFF"/>
+                    <rect x="7" y="7" width="3" height="3" fill="#FFFFFF"/>
+                  </svg>
+                  <span class="text-sm font-medium text-white">Tableau</span>
+                </div>
+
+                <!-- Power BI (brand-colored badge) -->
+                <div class="tech flex items-center gap-2 px-3 py-2 rounded-full shadow-sm" style="background:#F2C811;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="inline-block">
+                    <rect x="3" y="6" width="3" height="9" fill="#000000"/>
+                    <rect x="7.5" y="9" width="3" height="6" fill="#000000"/>
+                    <rect x="12" y="12" width="3" height="3" fill="#000000"/>
+                    <rect x="16.5" y="10" width="3" height="5" fill="#000000"/>
+                  </svg>
+                  <span class="text-sm font-medium">Power BI</span>
+                </div>
+
+                <!-- Flutter -->
+                <div class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm">
+                  <i class="devicon-flutter-plain colored text-2xl"></i>
+                  <span class="text-sm font-medium">Flutter</span>
+                </div>
+
+                <!-- Laravel -->
+                <div class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm">
+                  <i class="devicon-laravel-plain colored text-2xl"></i>
+                  <span class="text-sm font-medium">Laravel</span>
+                </div>
+
+                <!-- PHP -->
+                <div class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm">
+                  <i class="devicon-php-plain colored text-2xl"></i>
+                  <span class="text-sm font-medium">PHP</span>
+                </div>
+
+                <!-- Java -->
+                <div class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm">
+                  <i class="devicon-java-plain colored text-2xl"></i>
+                  <span class="text-sm font-medium">Java</span>
+                </div>
+
+                <!-- JavaScript -->
+                <div class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm">
+                  <i class="devicon-javascript-plain colored text-2xl"></i>
+                  <span class="text-sm font-medium">JavaScript</span>
+                </div>
+
+                <!-- Node.js -->
+                <div class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm">
+                  <i class="devicon-nodejs-plain colored text-2xl"></i>
+                  <span class="text-sm font-medium">Node</span>
+                </div>
+
+                <!-- React -->
+                <div class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm">
+                  <i class="devicon-react-original colored text-2xl"></i>
+                  <span class="text-sm font-medium">React</span>
+                </div>
+              </div>
             </div>
-            <a href="#" class="text-primary font-semibold hover:text-secondary transition">View Project →</a>
-        </div>
-        </div>
+          </div>
 
-        <!-- Project Card 3 -->
-        <div class="bg-accent rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform duration-300">
-        <img src="assets/images/project3.jpeg" alt="Project 3" class="h-48 w-full object-cover" />
-        <div class="p-6">
-            <h3 class="text-xl font-semibold text-primary mb-2">Academia Portal</h3>
-            <p class="text-gray-700 mb-4">
-            A student information management system supporting issue tracking, training, and real-time notifications.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-4">
-            <span class="bg-primary text-accent px-3 py-1 rounded-full text-sm">Java</span>
-            <span class="bg-secondary text-primary px-3 py-1 rounded-full text-sm">Spring Boot</span>
+          <!-- Right: Profile image -->
+          <div class="flex justify-center md:justify-end">
+            <img
+              src="assets/images/profile.jpeg"
+              alt="Francis Musau"
+              class="w-56 h-56 md:w-80 md:h-80 rounded-full object-cover border-4 border-primary shadow-lg"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="py-20 px-6 md:px-12 lg:px-20 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center text-primary mb-10">Featured Projects</h2>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Card -->
+            <div class="rounded-2xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition">
+              <img src="assets/images/projet1.jpeg" alt="Project thumbnail" class="w-full h-48 object-cover" />
+              <div class="p-5 bg-accent">
+                <h3 class="font-semibold text-xl text-primary mb-2">Scraping & Wrangling</h3>
+                <p class="text-gray-700 mb-4">Data scraping and wrangling pipelines — cleaning, transforming and storing datasets for analytics.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-3 py-1 rounded-full bg-primary text-accent text-sm">Python</span>
+                  <span class="px-3 py-1 rounded-full bg-secondary text-primary text-sm">Pandas</span>
+                </div>
+                <div class="flex gap-3">
+                  <a href="#" class="text-primary font-medium hover:text-secondary">View →</a>
+                  <a href="#" class="text-gray-600 hover:text-primary">GitHub</a>
+                </div>
+              </div>
             </div>
-            <a href="#" class="text-primary font-semibold hover:text-secondary transition">View Project →</a>
+
+            <!-- single-image placeholder cards repeated -->
+            <div class="rounded-2xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition">
+              <img src="assets/images/projet1.jpeg" alt="Project thumbnail" class="w-full h-48 object-cover" />
+              <div class="p-5 bg-accent">
+                <h3 class="font-semibold text-xl text-primary mb-2">Habits Tracker</h3>
+                <p class="text-gray-700 mb-4">A habit-building web app designed to help users track and develop daily routines.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-3 py-1 rounded-full bg-primary text-accent text-sm">Grails</span>
+                  <span class="px-3 py-1 rounded-full bg-secondary text-primary text-sm">Groovy</span>
+                </div>
+                <div class="flex gap-3">
+                  <a href="#" class="text-primary font-medium hover:text-secondary">View →</a>
+                  <a href="#" class="text-gray-600 hover:text-primary">GitHub</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-2xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition">
+              <img src="assets/images/projet1.jpeg" alt="Project thumbnail" class="w-full h-48 object-cover" />
+              <div class="p-5 bg-accent">
+                <h3 class="font-semibold text-xl text-primary mb-2">Academia Portal</h3>
+                <p class="text-gray-700 mb-4">Student portal with issue tracking, notifications and training modules for university use.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-3 py-1 rounded-full bg-primary text-accent text-sm">Java</span>
+                  <span class="px-3 py-1 rounded-full bg-secondary text-primary text-sm">Spring Boot</span>
+                </div>
+                <div class="flex gap-3">
+                  <a href="#" class="text-primary font-medium hover:text-secondary">View →</a>
+                  <a href="#" class="text-gray-600 hover:text-primary">GitHub</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+
+      <!-- Blog -->
+      <section id="blog" class="py-20 px-6 md:px-12 lg:px-20 bg-accent">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center text-primary mb-10">Latest Thoughts</h2>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <article class="rounded-2xl overflow-hidden shadow-md transform hover:-translate-y-2 transition bg-white">
+              <img src="assets/images/projet1.jpeg" alt="blog" class="w-full h-44 object-cover"/>
+              <div class="p-5">
+                <h3 class="font-semibold text-lg text-primary mb-2">The Joy of Building from Scratch</h3>
+                <p class="text-gray-700 mb-4">Why creating your own solutions — from code to concept — builds unmatched confidence and creativity.</p>
+                <a class="text-primary font-medium hover:text-secondary" href="#">Read more →</a>
+              </div>
+            </article>
+
+            <article class="rounded-2xl overflow-hidden shadow-md transform hover:-translate-y-2 transition bg-white">
+              <img src="assets/images/projet1.jpeg" alt="blog" class="w-full h-44 object-cover"/>
+              <div class="p-5">
+                <h3 class="font-semibold text-lg text-primary mb-2">Bridging Design and Functionality</h3>
+                <p class="text-gray-700 mb-4">How design thinking and solid backend architecture create seamless digital experiences.</p>
+                <a class="text-primary font-medium hover:text-secondary" href="#">Read more →</a>
+              </div>
+            </article>
+
+            <article class="rounded-2xl overflow-hidden shadow-md transform hover:-translate-y-2 transition bg-white">
+              <img src="assets/images/projet1.jpeg" alt="blog" class="w-full h-44 object-cover"/>
+              <div class="p-5">
+                <h3 class="font-semibold text-lg text-primary mb-2">The Dev Journey: Growth Over Perfection</h3>
+                <p class="text-gray-700 mb-4">Learning to build, fail, iterate, and succeed — one line of code at a time.</p>
+                <a class="text-primary font-medium hover:text-secondary" href="#">Read more →</a>
+              </div>
+            </article>
+          </div>
         </div>
-    </div>
-    </section>
+      </section>
 
-    <!-- Blog Section -->
-    <section id="blog" class="bg-accent py-20 px-8 md:px-24">
-    <h2 class="text-4xl font-bold text-primary mb-12 text-center">Latest Thoughts</h2>
+      <!-- Contact -->
+      <section id="contact" class="py-20 px-6 md:px-12 lg:px-20 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Let’s Connect</h2>
+          <p class="text-gray-700 mb-8">Have a project, collaboration, or opportunity in mind? I’d love to hear from you — let’s bring your ideas to life.</p>
 
-    <div class="grid md:grid-cols-3 gap-10">
-        <!-- Blog Post 1 -->
-        <div class="bg-white rounded-2xl shadow-md p-6 hover:-translate-y-2 transition-transform duration-300">
-        <h3 class="text-xl font-semibold text-primary mb-3">The Joy of Building from Scratch</h3>
-        <p class="text-gray-700 mb-4">
-            Why creating your own solutions — from code to concept — builds unmatched confidence and creativity.
-        </p>
-        <a href="#" class="text-primary font-semibold hover:text-secondary transition">Read More →</a>
+          <div class="flex items-center justify-center gap-6 mb-8">
+            <a href="mailto:francisfrancs02@gmail.com" class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-primary text-accent hover:opacity-95 transition">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="inline-block"><path d="M3 8l9 6 9-6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Email
+            </a>
+
+            <a href="https://www.linkedin.com/in/francis-musau-b17690210/" target="_blank" class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-neutral-100 hover:bg-neutral-50 transition">
+              <i class="devicon-linkedin-plain text-2xl"></i> LinkedIn
+            </a>
+
+            <a href="https://github.com/MuthamaFrancs" target="_blank" class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-neutral-100 hover:bg-neutral-50 transition">
+              <i class="devicon-github-original text-2xl"></i> GitHub
+            </a>
+          </div>
+
+          <p class="text-sm text-gray-500">© <span id="year"></span> Muthama Francis Musau — Built with ❤️</p>
         </div>
+      </section>
+    </main>
 
-        <!-- Blog Post 2 -->
-        <div class="bg-white rounded-2xl shadow-md p-6 hover:-translate-y-2 transition-transform duration-300">
-        <h3 class="text-xl font-semibold text-primary mb-3">Bridging Design and Functionality</h3>
-        <p class="text-gray-700 mb-4">
-            How design thinking and solid backend architecture create seamless digital experiences.
-        </p>
-        <a href="#" class="text-primary font-semibold hover:text-secondary transition">Read More →</a>
-        </div>
-
-        <!-- Blog Post 3 -->
-        <div class="bg-white rounded-2xl shadow-md p-6 hover:-translate-y-2 transition-transform duration-300">
-        <h3 class="text-xl font-semibold text-primary mb-3">The Dev Journey: Growth Over Perfection</h3>
-        <p class="text-gray-700 mb-4">
-            Learning to build, fail, iterate, and succeed — one line of code at a time.
-        </p>
-        <a href="#" class="text-primary font-semibold hover:text-secondary transition">Read More →</a>
-        </div>
-    </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="bg-primary text-accent py-20 px-8 md:px-24 text-center">
-    <h2 class="text-4xl font-bold mb-6">Let’s Connect</h2>
-    <p class="text-lg mb-8 max-w-xl mx-auto text-accent/90">
-        Have a project, collaboration, or opportunity in mind?  
-        I’d love to hear from you — let’s bring your ideas to life.
-    </p>
-
-    <div class="flex justify-center space-x-8 mb-8">
-        <a href="mailto:francisfrancs02@gmail.com" class="hover:text-secondary transition">
-        <i class="fa-solid fa-envelope text-3xl"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/francis-musau-b17690210/" target="_blank" class="hover:text-secondary transition">
-        <i class="fa-brands fa-linkedin text-3xl"></i>
-        </a>
-        <a href="https://github.com/MuthamaFrancs" target="_blank" class="hover:text-secondary transition">
-        <i class="fa-brands fa-github text-3xl"></i>
-        </a>
-    </div>
-
-    <a href="mailto:francisfrancs02@gmail.com"
-        class="inline-block px-8 py-3 bg-secondary text-primary font-semibold rounded-full hover:bg-accent hover:text-primary transition">
-        Send a Message
-    </a>
-    </section>
-
-
-    <!-- Fade-in on Scroll Script -->
+    <!-- Small scripts -->
     <script>
-    const aboutContent = document.getElementById("about-content");
-    const observer = new IntersectionObserver(
-        (entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-            aboutContent.classList.remove("opacity-0", "translate-y-6");
-            aboutContent.classList.add("opacity-100", "translate-y-0");
-            }
-        });
-        },
-        { threshold: 0.7 }
-    );
-    observer.observe(aboutContent);
-    </script>
+      // mobile menu toggle
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
+      // role rotator
+      const roles = ["Software Engineer","Fullstack Developer","Mobile Developer","Data Analyst","AI Enthusiast"];
+      let idx = 0;
+      const roleEl = document.getElementById('role');
+      setInterval(()=> {
+        idx = (idx + 1) % roles.length;
+        if (roleEl) roleEl.textContent = roles[idx];
+      }, 2600);
 
+      // about fade-in
+      const about = document.getElementById('about');
+      if (about) {
+        const content = about.querySelector('#about-content');
+        if (content) {
+          const obs = new IntersectionObserver(entries=>{
+            entries.forEach(e=>{
+              if (e.isIntersecting) {
+                content.classList.remove('opacity-0','translate-y-6');
+                content.classList.add('opacity-100','translate-y-0');
+              }
+            });
+          }, {threshold: 0.4});
+          obs.observe(content);
+        }
+      }
 
-    <!-- Font Awesome Icons -->
-    <script
-      src="https://kit.fontawesome.com/a2d9e6d44b.js"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- Role Toggle Script -->
-    <script>
-      const roles = [
-        "Software Engineer",
-        "Fullstack Developer",
-        "Mobile Developer",
-        "Data Analyst",
-        "AI Enthusiast",
-      ];
-      let index = 0;
-      const roleElement = document.getElementById("role");
-
-      setInterval(() => {
-        index = (index + 1) % roles.length;
-        roleElement.textContent = roles[index];
-      }, 2500);
+      // year
+      document.getElementById('year').textContent = new Date().getFullYear();
     </script>
   </body>
 </html>

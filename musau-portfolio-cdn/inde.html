@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Francis Musau | Portfolio</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#5E6F4E", // Olive Green
+              accent: "#F6F3EB", // Soft Ivory
+              secondary: "#A5B68D", // Muted Sage
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+    <body class="bg-accent text-gray-800">
+        <!-- Navbar -->
+    <header class="fixed top-0 left-0 w-full bg-primary/90 backdrop-blur-md text-accent shadow-sm z-50">
+    <nav class="flex items-center justify-between px-6 md:px-20 py-4">
+        <!-- Logo -->
+        <div class="text-2xl font-bold tracking-wide">
+        <a href="#home" class="hover:text-secondary transition">Musau.dev</a>
+        </div>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex space-x-8 text-lg">
+        <li><a href="#about" class="hover:text-secondary transition">About</a></li>
+        <li><a href="#projects" class="hover:text-secondary transition">Projects</a></li>
+        <li><a href="#blog" class="hover:text-secondary transition">Blog</a></li>
+        <li><a href="#contact" class="hover:text-secondary transition">Contact</a></li>
+        </ul>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden text-3xl focus:outline-none">
+        <i class="fa-solid fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div
+        id="mobile-menu"
+        class="hidden flex-col bg-primary text-accent text-center md:hidden space-y-4 py-6 border-t border-secondary"
+    >
+        <a href="#about" class="hover:text-secondary transition">About</a>
+        <a href="#projects" class="hover:text-secondary transition">Projects</a>
+        <a href="#blog" class="hover:text-secondary transition">Blog</a>
+        <a href="#contact" class="hover:text-secondary transition">Contact</a>
+    </div>
+    </header>
+
+    <script>
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+    });
+    </script>
+
+    <!-- Hero Section -->
+    <section
+        id="home" class="pt-24 min-h-screen flex flex-col md:flex-row items-center justify-between px-8 md:px-24 py-16 bg-primary text-accent"
+    >
+      <!-- Left content -->
+      <div class="md:w-1/2 space-y-6">
+        <h1 class="text-4xl md:text-5xl font-bold leading-snug">
+          Hi, I'm <span class="text-secondary">Francis Musau</span>
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-semibold">
+          a
+          <span
+            id="role"
+            class="border-b-2 border-secondary text-accent transition-all duration-500"
+          >
+            Software Engineer
+          </span>
+        </h2>
+        <p class="text-lg text-accent/90 max-w-lg">
+          I build reliable, creative, and data-driven digital experiences —
+          from modern web and mobile apps to intelligent systems.
+        </p>
+
+        <!-- Contact Icons -->
+        <div class="flex space-x-6 pt-4">
+          <a
+            href="tel:+254769892579"
+            class="hover:text-secondary transition"
+            title="Call"
+            ><i class="fa-solid fa-phone text-2xl"></i
+          ></a>
+          <a
+            href="mailto:francisfrancs02@gmail.com"
+            class="hover:text-secondary transition"
+            title="Email"
+            ><i class="fa-solid fa-envelope text-2xl"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/francis-musau-b17690210/"
+            class="hover:text-secondary transition"
+            target="_blank"
+            title="LinkedIn"
+            ><i class="fa-brands fa-linkedin text-2xl"></i
+          ></a>
+          <a
+            href="https://github.com/MuthamaFrancs"
+            class="hover:text-secondary transition"
+            target="_blank"
+            title="GitHub"
+            ><i class="fa-brands fa-github text-2xl"></i
+          ></a>
+        </div>
+      </div>
+
+      <!-- Right side - Profile image -->
+      <div class="md:w-1/2 flex justify-center mt-10 md:mt-0">
+        <img
+          src="assets/images/profile.jpeg"
+          alt="Francis Musau"
+          class="w-60 h-60 md:w-80 md:h-80 rounded-full border-4 border-secondary shadow-lg object-cover"
+        />
+      </div>
+    </section>
+
+        <!-- About Section -->
+    <section
+    id="about"
+    class="relative min-h-screen bg-accent flex flex-col justify-center px-8 md:px-24 py-20 overflow-hidden"
+    >
+    <!-- Background Image -->
+    <div
+        class="absolute inset-0 bg-[url('assets/images/profile.jpeg')] bg-cover bg-center opacity-10"
+    ></div>
+
+    <!-- Content -->
+    <div
+        class="relative z-10 grid md:grid-cols-2 gap-12 items-center opacity-0 translate-y-6 transition-all duration-700 ease-out"
+        id="about-content"
+    >
+        <!-- Text Column -->
+        <div>
+        <h2 class="text-4xl font-bold text-primary mb-6">About Me</h2>
+        <p class="text-lg leading-relaxed text-gray-700 mb-8">
+            I’m <span class="font-semibold text-primary">Francis Musau</span>, a
+            multi-disciplinary developer with a passion for crafting creative,
+            data-informed, and user-centered software solutions.
+            <br /><br />
+            My experience spans mobile, web, and AI-driven systems — combining clean
+            design, powerful code, and measurable impact. I love learning, building,
+            and collaborating on projects that inspire growth and innovation.
+        </p>
+
+        <a
+            href="#projects"
+            class="inline-block px-6 py-3 bg-primary text-accent font-semibold rounded-full hover:bg-secondary hover:text-primary transition"
+        >
+            View My Work
+        </a>
+        </div>
+
+        <!-- Tech Stack Column -->
+        
+        <div class="flex flex-wrap gap-4 justify-center md:justify-end">
+        <span
+            class="bg-primary text-accent px-4 py-2 rounded-full font-medium shadow-sm"
+            >HTML</span
+        >
+        <span
+            class="bg-secondary text-primary px-4 py-2 rounded-full font-medium shadow-sm"
+            >CSS / Tailwind</span
+        >
+        <span
+            class="bg-primary text-accent px-4 py-2 rounded-full font-medium shadow-sm"
+            >JavaScript</span
+        >
+        <span
+            class="bg-secondary text-primary px-4 py-2 rounded-full font-medium shadow-sm"
+            >Next.js</span
+        >
+        <span
+            class="bg-primary text-accent px-4 py-2 rounded-full font-medium shadow-sm"
+            >Flutter</span
+        >
+        <span
+            class="bg-secondary text-primary px-4 py-2 rounded-full font-medium shadow-sm"
+            >Groovy & Grails</span
+        >
+        <span
+            class="bg-primary text-accent px-4 py-2 rounded-full font-medium shadow-sm"
+            >Python</span
+        >
+        <span
+            class="bg-secondary text-primary px-4 py-2 rounded-full font-medium shadow-sm"
+            >SQL</span
+        >
+        </div>
+
+    </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="bg-primary/5 py-20 px-8 md:px-24">
+    <h2 class="text-4xl font-bold text-primary mb-12 text-center">Featured Projects</h2>
+
+    <div class="grid md:grid-cols-3 gap-10">
+        <!-- Project Card 1 -->
+        <div class="bg-accent rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform duration-300">
+        <img src="assets/images/projet1.jpeg" alt="Project 1" class="h-48 w-full object-cover" />
+        <div class="p-6">
+            <h3 class="text-xl font-semibold text-primary mb-2">Orientation App</h3>
+            <p class="text-gray-700 mb-4">
+            A student onboarding platform featuring schedules, notifications, and interactive contact tools.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-primary text-accent px-3 py-1 rounded-full text-sm">Flutter</span>
+            <span class="bg-secondary text-primary px-3 py-1 rounded-full text-sm">Firebase</span>
+            </div>
+            <a href="#" class="text-primary font-semibold hover:text-secondary transition">View Project →</a>
+        </div>
+        </div>
+
+        <!-- Project Card 2 -->
+        <div class="bg-accent rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform duration-300">
+        <img src="assets/images/project2.jpeg" alt="Project 2" class="h-48 w-full object-cover" />
+        <div class="p-6">
+            <h3 class="text-xl font-semibold text-primary mb-2">Habits Tracker</h3>
+            <p class="text-gray-700 mb-4">
+            A personal productivity web app built with Groovy & Grails to help users build consistency in habits.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-primary text-accent px-3 py-1 rounded-full text-sm">Groovy</span>
+            <span class="bg-secondary text-primary px-3 py-1 rounded-full text-sm">Grails</span>
+            </div>
+            <a href="#" class="text-primary font-semibold hover:text-secondary transition">View Project →</a>
+        </div>
+        </div>
+
+        <!-- Project Card 3 -->
+        <div class="bg-accent rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform duration-300">
+        <img src="assets/images/project3.jpeg" alt="Project 3" class="h-48 w-full object-cover" />
+        <div class="p-6">
+            <h3 class="text-xl font-semibold text-primary mb-2">Academia Portal</h3>
+            <p class="text-gray-700 mb-4">
+            A student information management system supporting issue tracking, training, and real-time notifications.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-primary text-accent px-3 py-1 rounded-full text-sm">Java</span>
+            <span class="bg-secondary text-primary px-3 py-1 rounded-full text-sm">Spring Boot</span>
+            </div>
+            <a href="#" class="text-primary font-semibold hover:text-secondary transition">View Project →</a>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="bg-accent py-20 px-8 md:px-24">
+    <h2 class="text-4xl font-bold text-primary mb-12 text-center">Latest Thoughts</h2>
+
+    <div class="grid md:grid-cols-3 gap-10">
+        <!-- Blog Post 1 -->
+        <div class="bg-white rounded-2xl shadow-md p-6 hover:-translate-y-2 transition-transform duration-300">
+        <h3 class="text-xl font-semibold text-primary mb-3">The Joy of Building from Scratch</h3>
+        <p class="text-gray-700 mb-4">
+            Why creating your own solutions — from code to concept — builds unmatched confidence and creativity.
+        </p>
+        <a href="#" class="text-primary font-semibold hover:text-secondary transition">Read More →</a>
+        </div>
+
+        <!-- Blog Post 2 -->
+        <div class="bg-white rounded-2xl shadow-md p-6 hover:-translate-y-2 transition-transform duration-300">
+        <h3 class="text-xl font-semibold text-primary mb-3">Bridging Design and Functionality</h3>
+        <p class="text-gray-700 mb-4">
+            How design thinking and solid backend architecture create seamless digital experiences.
+        </p>
+        <a href="#" class="text-primary font-semibold hover:text-secondary transition">Read More →</a>
+        </div>
+
+        <!-- Blog Post 3 -->
+        <div class="bg-white rounded-2xl shadow-md p-6 hover:-translate-y-2 transition-transform duration-300">
+        <h3 class="text-xl font-semibold text-primary mb-3">The Dev Journey: Growth Over Perfection</h3>
+        <p class="text-gray-700 mb-4">
+            Learning to build, fail, iterate, and succeed — one line of code at a time.
+        </p>
+        <a href="#" class="text-primary font-semibold hover:text-secondary transition">Read More →</a>
+        </div>
+    </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-primary text-accent py-20 px-8 md:px-24 text-center">
+    <h2 class="text-4xl font-bold mb-6">Let’s Connect</h2>
+    <p class="text-lg mb-8 max-w-xl mx-auto text-accent/90">
+        Have a project, collaboration, or opportunity in mind?  
+        I’d love to hear from you — let’s bring your ideas to life.
+    </p>
+
+    <div class="flex justify-center space-x-8 mb-8">
+        <a href="mailto:francisfrancs02@gmail.com" class="hover:text-secondary transition">
+        <i class="fa-solid fa-envelope text-3xl"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/francis-musau-b17690210/" target="_blank" class="hover:text-secondary transition">
+        <i class="fa-brands fa-linkedin text-3xl"></i>
+        </a>
+        <a href="https://github.com/MuthamaFrancs" target="_blank" class="hover:text-secondary transition">
+        <i class="fa-brands fa-github text-3xl"></i>
+        </a>
+    </div>
+
+    <a href="mailto:francisfrancs02@gmail.com"
+        class="inline-block px-8 py-3 bg-secondary text-primary font-semibold rounded-full hover:bg-accent hover:text-primary transition">
+        Send a Message
+    </a>
+    </section>
+
+
+    <!-- Fade-in on Scroll Script -->
+    <script>
+    const aboutContent = document.getElementById("about-content");
+    const observer = new IntersectionObserver(
+        (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+            aboutContent.classList.remove("opacity-0", "translate-y-6");
+            aboutContent.classList.add("opacity-100", "translate-y-0");
+            }
+        });
+        },
+        { threshold: 0.7 }
+    );
+    observer.observe(aboutContent);
+    </script>
+
+
+
+    <!-- Font Awesome Icons -->
+    <script
+      src="https://kit.fontawesome.com/a2d9e6d44b.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Role Toggle Script -->
+    <script>
+      const roles = [
+        "Software Engineer",
+        "Fullstack Developer",
+        "Mobile Developer",
+        "Data Analyst",
+        "AI Enthusiast",
+      ];
+      let index = 0;
+      const roleElement = document.getElementById("role");
+
+      setInterval(() => {
+        index = (index + 1) % roles.length;
+        roleElement.textContent = roles[index];
+      }, 2500);
+    </script>
+  </body>
+</html>
