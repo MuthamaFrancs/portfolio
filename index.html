@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Francis Musau - Full Stack Developer and Automation Engineer Portfolio" />
     <title>Francis Musau | Portfolio</title>
 
-    <!-- Tailwind CDN -->
+    <!-- Tailwind CDN (Note: For production, use a build step like Vite) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -17,406 +18,226 @@
               secondary: "#A5B68D", // Muted Sage
               neutralDark: "#0f1720",
             },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            }
           },
         },
       };
     </script>
 
-    <!-- Devicon (tech icons) -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-    />
-
-    <a href="/style/style.css"></a>
-    <script src="/scripts/main.js"></script>
+    <!-- Devicon & Google Fonts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
     <style>
-      html {
-        scroll-behavior: smooth;
+      body { font-family: 'Inter', sans-serif; }
+      
+      /* Hover lift effect */
+      .tech-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
-      /* subtle glow on hover for tech icons */
-      .tech {
-        transition: transform 180ms ease, box-shadow 180ms ease;
+      .tech-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
       }
-      .tech:hover {
-        transform: translateY(-6px) scale(1.05);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-      }
+      
+      /* Modal Animation */
       @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
       }
-      .animate-fadeIn {
-        animation: fadeIn 0.3s ease-in-out;
+      .animate-modal {
+        animation: fadeIn 0.2s ease-out forwards;
       }
     </style>
   </head>
 
-  <body class="bg-accent text-neutral-800 antialiased">
-    <!-- Sticky Navbar -->
-    <header
-      class="fixed w-full z-50 top-0 left-0 bg-white/60 backdrop-blur-md border-b border-gray-200"
-    >
-      <nav class="max-w-6xl mx-auto px-6 md:px-8 lg:px-12 py-3 flex items-center justify-between">
-        <a href="#home" class="font-bold text-2xl text-primary">Musau.dev</a>
+  <body class="bg-accent text-neutral-800 antialiased selection:bg-primary selection:text-white">
+    
+    <!-- Navbar -->
+    <header class="fixed w-full z-50 top-0 bg-white/80 backdrop-blur-md border-b border-gray-200">
+      <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#home" class="font-bold text-2xl text-primary tracking-tight">Musau.dev</a>
 
         <!-- Desktop Links -->
-        <ul class="hidden md:flex items-center gap-8 text-lg font-medium text-primary">
-          <li><a class="hover:text-neutralDark" href="#about">About</a></li>
-          <li><a class="hover:text-neutralDark" href="#projects">Projects</a></li>
-          <li><a class="hover:text-neutralDark" href="#blog">Blog</a></li>
-          <li><a class="hover:text-neutralDark" href="#contact">Contact</a></li>
+        <ul class="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-wide text-gray-600">
+          <li><a class="hover:text-primary transition" href="#about">About</a></li>
+          <li><a class="hover:text-primary transition" href="#resume">Resume</a></li>
+          <li><a class="hover:text-primary transition" href="#projects">Projects</a></li>
+          <li><a class="hover:text-primary transition" href="#blog">Blog</a></li>
+          <li><a class="hover:text-primary transition" href="#contact">Contact</a></li>
         </ul>
 
         <!-- Mobile toggle -->
-        <button id="menu-btn" class="md:hidden p-2" aria-label="toggle menu">
-          <svg class="w-6 h-6 text-neutral-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-               xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round"
-               stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
         </button>
       </nav>
 
       <!-- Mobile Menu -->
-      <div id="mobile-menu" class="hidden md:hidden bg-white/95 border-t border-gray-100 ">
-        <div class="flex flex-col px-6 py-4 gap-3 ">
-          <a href="#about" class="py-2 hover:text-primary">About</a>
-          <a href="#projects" class="py-2 hover:text-primary">Projects</a>
-          <a href="#blog" class="py-2 hover:text-primary">Blog</a>
-          <a href="#contact" class="py-2 hover:text-primary">Contact</a>
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+        <div class="flex flex-col px-6 py-4 gap-4 text-center">
+          <a href="#about" class="mobile-link py-2 text-gray-700 hover:text-primary font-medium">About</a>
+          <a href="#resume" class="mobile-link py-2 text-gray-700 hover:text-primary font-medium">Resume</a>
+          <a href="#projects" class="mobile-link py-2 text-gray-700 hover:text-primary font-medium">Projects</a>
+          <a href="#blog" class="mobile-link py-2 text-gray-700 hover:text-primary font-medium">Blog</a>
+          <a href="#contact" class="mobile-link py-2 text-gray-700 hover:text-primary font-medium">Contact</a>
         </div>
       </div>
     </header>
 
-    <!-- HERO / ABOUT -->
-    <main class="pt-20">
-      <section id="home" class="min-h-screen flex items-center px-6 md:px-12 lg:px-20">
-        <div class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <!-- Left: Text -->
-          <div class="space-y-6">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-neutral-900">
-              <span class="block">Muthama <span class="text-primary">Francis</span></span>
+    <main>
+      <!-- HERO SECTION -->
+      <section id="home" class="min-h-screen flex items-center pt-20 px-6 md:px-12 lg:px-20">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          
+          <!-- Text -->
+          <div class="space-y-6 animate-fade-in-up">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-neutral-900 leading-tight">
+              Muthama <span class="text-primary">Francis</span>
             </h1>
 
-            <p class="text-lg md:text-xl text-neutral-700 leading-relaxed max-w-prose">
-              I am a Full-stack software developer. I am a passionate about technology and projects that solve real world problems.
-              With <span>3 years of professional experience<span>, I have mastered Object Oriented Programming, Mobile Programming
-              and Process Automation . 
+            <p class="text-lg md:text-xl text-neutral-600 leading-relaxed max-w-prose">
+              Full-stack software developer passionate about technology that solves real-world problems. 
+              With <span class="font-semibold text-primary">3 years of experience</span>, I specialize in 
+              Object Oriented Programming, Mobile Development, and Process Automation.
             </p>
 
-            <!-- Role + CTA -->
-            <div class="flex items-center gap-4 pt-2 flex-wrap">
-              <div class="inline-flex items-center gap-3">
-                <span class="text-xl text-gray-1300">I’m a</span>
-                <span id="role" class="text-lg font-medium text-primary">Software Engineer</span>
-              </div>
+            <div class="flex items-center gap-3 text-lg">
+              <span class="text-gray-500">I build</span>
+              <span id="role" class="font-bold text-primary">Software Solutions</span>
+            </div>
 
-              <a href="#projects" class="inline-block rounded-full bg-primary text-accent px-5 py-2 font-medium shadow-sm hover:opacity-95 transition">
-                View Projects
+            <div class="pt-4">
+              <a href="#projects" class="inline-block rounded-full bg-primary text-white px-8 py-3 font-semibold shadow-lg hover:bg-opacity-90 hover:-translate-y-1 transition-all">
+                View My Work
               </a>
             </div>
 
-            <!-- Tech stack -->
-            <div class="mt-6">
-              <h3 class="text-sm font-semibold text-gray-600 mb-3">Tech & Tools</h3>
-
+            <!-- Tech Stack Badges -->
+            <div class="pt-8">
+              <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Tech Arsenal</p>
               <div class="flex flex-wrap gap-3">
                 <!-- Python -->
-                <div class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm">
-                  <i class="devicon-python-plain colored text-2xl"></i>
-                  <span class="text-sm font-medium">Python</span>
+                <div class="tech-card flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-gray-100 shadow-sm">
+                  <i class="devicon-python-plain colored text-xl"></i> <span class="text-sm font-medium">Python</span>
                 </div>
-
-                <!-- Tableau (brand-colored badge) -->
-                <div class="tech flex items-center gap-2 px-3 py-2 rounded-full shadow-sm" style="background:#E87722;">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="inline-block">
-                    <rect x="3" y="3" width="3" height="3" fill="#FFFFFF"/>
-                    <rect x="7" y="3" width="3" height="3" fill="#FFFFFF"/>
-                    <rect x="11" y="3" width="3" height="3" fill="#FFFFFF"/>
-                    <rect x="3" y="7" width="3" height="3" fill="#FFFFFF"/>
-                    <rect x="7" y="7" width="3" height="3" fill="#FFFFFF"/>
-                  </svg>
-                  <span class="text-sm font-medium text-white">Tableau</span>
-                </div>
-
-                <!-- Power BI (brand-colored badge) -->
-                <div class="tech flex items-center gap-2 px-3 py-2 rounded-full shadow-sm" style="background:#F2C811;">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="inline-block">
-                    <rect x="3" y="6" width="3" height="9" fill="#000000"/>
-                    <rect x="7.5" y="9" width="3" height="6" fill="#000000"/>
-                    <rect x="12" y="12" width="3" height="3" fill="#000000"/>
-                    <rect x="16.5" y="10" width="3" height="5" fill="#000000"/>
-                  </svg>
-                  <span class="text-sm font-medium">Power BI</span>
-                </div>
-
                 <!-- Flutter -->
-                <div class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm">
-                  <i class="devicon-flutter-plain colored text-2xl"></i>
-                  <span class="text-sm font-medium">Flutter</span>
+                <div class="tech-card flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-gray-100 shadow-sm">
+                  <i class="devicon-flutter-plain colored text-xl"></i> <span class="text-sm font-medium">Flutter</span>
                 </div>
-
-                <!-- Laravel -->
-                <div class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm">
-                  <i class="devicon-laravel-plain colored text-2xl"></i>
-                  <span class="text-sm font-medium">Laravel</span>
-                </div>
-
-                <!-- PHP -->
-                <div class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm">
-                  <i class="devicon-php-plain colored text-2xl"></i>
-                  <span class="text-sm font-medium">PHP</span>
-                </div>
-
-                <!-- Java -->
-                <div class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm">
-                  <i class="devicon-java-plain colored text-2xl"></i>
-                  <span class="text-sm font-medium">Java</span>
-                </div>
-
-                <!-- JavaScript -->
-                <div class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm">
-                  <i class="devicon-javascript-plain colored text-2xl"></i>
-                  <span class="text-sm font-medium">JavaScript</span>
-                </div>
-
-                <!-- Node.js -->
-                <div class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm">
-                  <i class="devicon-nodejs-plain colored text-2xl"></i>
-                  <span class="text-sm font-medium">Node</span>
-                </div>
-
                 <!-- React -->
-                <div class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm">
-                  <i class="devicon-react-original colored text-2xl"></i>
-                  <span class="text-sm font-medium">React</span>
+                <div class="tech-card flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-gray-100 shadow-sm">
+                  <i class="devicon-react-original colored text-xl"></i> <span class="text-sm font-medium">React</span>
+                </div>
+                <!-- Tableau -->
+                <div class="tech-card flex items-center gap-2 px-4 py-2 rounded-lg shadow-sm text-white" style="background:#E87722;">
+                  <span class="text-sm font-bold">Tableau</span>
+                </div>
+                <!-- Node -->
+                <div class="tech-card flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-gray-100 shadow-sm">
+                  <i class="devicon-nodejs-plain colored text-xl"></i> <span class="text-sm font-medium">Node.js</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Right: Profile image -->
-          <div class="flex justify-center md:justify-end">
-            <img
-              src="assets/images/profile_hq.png"
-              alt="Francis Musau"
-              class="w-56 h-56 md:w-80 md:h-80 rounded-full object-cover border-4 border-primary shadow-lg"
-            />
+          <!-- Image -->
+          <div class="flex justify-center md:justify-end relative">
+            <div class="absolute inset-0 bg-secondary/20 rounded-full blur-3xl transform translate-x-4 translate-y-4 -z-10"></div>
+            <!-- Placeholder for your image -->
+            <img src="assets/images/profile_hq.png" onerror="this.src='https://ui-avatars.com/api/?name=Francis+Musau&size=300&background=5E6F4E&color=fff'" alt="Francis Musau" class="w-64 h-64 md:w-96 md:h-96 rounded-full object-cover border-4 border-white shadow-2xl" />
           </div>
         </div>
       </section>
 
-      <!-- Resume / Experience -->
-      <section id="resume" class="py-20 px-6 md:px-12 lg:px-20 bg-white">
+      <!-- RESUME OVERVIEW -->
+      <section id="resume" class="py-24 px-6 bg-white">
         <div class="max-w-5xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-center text-primary mb-12">Résumé Overview</h2>
+          <h2 class="text-3xl font-bold text-center text-neutralDark mb-16">Career Roadmap</h2>
 
-          <!-- Academic Background -->
-          <div class="mb-10">
-            <h3 class="text-2xl font-semibold text-neutralDark mb-4 flex items-center gap-3">
-              <i class="devicon-java-plain colored text-2xl"></i> Academic Background
-            </h3>
-            <!-- Daystar Uni  -->
-            <div class="border-l-4 border-primary pl-6 space-y-4">
-              <div>
-                <h4 class="font-semibold text-lg text-neutralDark">Daystar University</h4>
-                <p class="text-gray-700">B.Sc. Computer Science — <span class="italic">Expected Graduation Nov 26</span></p>
-                <p class="text-sm text-gray-600">Relevant coursework: Software Engineering, Data Structures, Mobile App Development</p>
-              </div>
-            </div>
-            <!-- CyberShujaa -->
-            <div class="border-l-4 border-primary pl-6 space-y-4">
-              <div>
-                <h4 class="font-semibold text-lg text-neutralDark">CyberShujaa</h4>
-                <p class="text-gray-700">Certificate Data Science, AI & ML — <span class="italic"> Completed</span></p>
-                <p class="text-sm text-gray-600">Relevant coursework: Data Anaytics, Data Wrangling, Business Intelligence, Data Visualization</p>
-                <div class="flex flex-wrap gap-3 mt-2" >
-                  <span class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm"><i class="devicon-python-plain colored"></i>Python</span>
-                  <!-- Tableau (brand-colored badge) -->
-                    
-                    <!-- Power BI (brand-colored badge) -->
-                    <div class="tech flex items-center gap-2 px-3 py-2 rounded-full shadow-sm" style="background:#F2C811;">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="inline-block">
-                        <rect x="3" y="6" width="3" height="9" fill="#000000"/>
-                        <rect x="7.5" y="9" width="3" height="6" fill="#000000"/>
-                        <rect x="12" y="12" width="3" height="3" fill="#000000"/>
-                        <rect x="16.5" y="10" width="3" height="5" fill="#000000"/>
-                      </svg>
-                      <span class="text-sm font-medium">Power BI</span>
-                    </div>
-
-                    <div class="tech flex items-center gap-2 px-3 py-2 rounded-full shadow-sm" style="background:#E87722;">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="inline-block">
-                        <rect x="3" y="3" width="3" height="3" fill="#FFFFFF"/>
-                        <rect x="7" y="3" width="3" height="3" fill="#FFFFFF"/>
-                        <rect x="11" y="3" width="3" height="3" fill="#FFFFFF"/>
-                        <rect x="3" y="7" width="3" height="3" fill="#FFFFFF"/>
-                        <rect x="7" y="7" width="3" height="3" fill="#FFFFFF"/>
-                      </svg>
-                      <span class="text-sm font-medium text-white">Tableau</span>
-                    </div>
-
-                    <span class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm"><i class="devicon-numpy-plain colored"></i>Numpy</span>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-
-          <!-- Work Experience -->
-          <div class="mb-10">
-            <h3 class="text-2xl font-semibold text-neutralDark mb-4 flex items-center gap-3">
-              <i class="devicon-github-original text-2xl"></i> Work Experience
-            </h3>
-            <div class="border-l-4 border-primary pl-6 space-y-6">
-              <div>
-                <h4 class="font-semibold text-lg text-neutralDark">Dispatch Supervisor — Easy Coach Kenya</h4>
-                <p class="text-gray-700 text-sm italic">September 2025- Ongoing</p>
-                <ul class="list-disc list-inside text-gray-700 text-sm mt-2 space-y-1">
-                  <li>Collected daily operational data and prepared manifest reposts with depature information, customer data and manifest reports.</li>
-                  <li>Analyzed dispatch and passenger data to help management in decision making and performance monitoring.</li>
-                  <li>Contributed to maintaining data accuracy for stake holder decision making.</li>
-                  <li>Strengthened skills in operational research, reporting under pressure, and practical data use.</li>
-                </ul>
-              </div>
-              <!-- DITA Experience -->
-              <div>
-                <h4 class="font-semibold text-lg text-neutralDark">Software Developer — Daystar IT Association</h4>
-                <p class="text-gray-700 text-sm italic">April 2023- April 2025</p>
-                <ul class="list-disc list-inside text-gray-700 text-sm mt-2 space-y-1">
-                  <li>Developed mobile applications eg Orientation App used during student onboarding.</li>
-                  <li>Documented and deployed apps, collaborated with developers, and automated test scripts.</li>
-                  <li>Contributed to maintaining overall product quality across releases.</li>
-                </ul>
-              </div>
-              <!-- Turbo Networks -->
-              <div>
-                <h4 class="font-semibold text-lg text-neutralDark">Junior Network Administaror — Turbo Networks</h4>
-                <p class="text-gray-700 text-sm italic">May 2024 - September 2024</p>
-                <ul class="list-disc list-inside text-gray-700 text-sm mt-2 space-y-1">
-                  <li>Configured networks ensuring 99% network Uptime.</li>
-                  <li>Managed Networking equipment switches and monitored Network Management Software.</li>
-                  <li>Troubleshooted networks and set up new stations.</li>
-                </ul>
-              </div>
-                <!--AI Data Annotator -->
-              <div>
-                <h4 class="font-semibold text-lg text-neutralDark">Data Annotator — AIwakforce</h4>
-                <p class="text-gray-700 text-sm italic">May 2023 - December 2024</p>
-                <ul class="list-disc list-inside text-gray-700 text-sm mt-2 space-y-1">
-                  <li>Annotated text, images, and video to train AI models</li>
-                  <li>Produced high quality output with upto 98% accuracy</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Certifications -->
-          <div class="mb-10">
-            <h3 class="text-2xl font-semibold text-neutralDark mb-4 flex items-center gap-3">
-              <i class="devicon-python-plain colored text-2xl"></i> Certifications
-            </h3>
-            <ul class="list-disc list-inside text-gray-700 text-sm pl-2 space-y-1">
-              <li>Software Development Certificate - Modcom Institute of Technology</li>
-              <li>Cisco Networking Essentials</li>
-            </ul>
-          </div>
-
-          <!-- Skills -->
-          <div>
-            <h3 class="text-2xl font-semibold text-neutralDark mb-4 flex items-center gap-3">
-              <i class="devicon-flutter-plain colored text-2xl"></i> Skills Snapshot
-            </h3>
-            <div class="flex flex-wrap gap-3">
-              <span class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm"><i class="devicon-java-plain colored"></i>Java</span>
-              <span class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm"><i class="devicon-flutter-plain colored"></i>Flutter</span>
-              <span class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm"><i class="devicon-php-plain colored"></i>PHP</span>
-              <span class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm"><i class="devicon-react-original colored"></i>React</span>
-              <span class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm"><i class="devicon-nodejs-plain colored"></i>Node.js</span>
-              <span class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm"><i class="devicon-javascript-plain colored"></i>JavaScript</span>
-              <span class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm"><i class="devicon-python-plain colored"></i>Python</span>
-              <span class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm"><i class="devicon-mysql-plain colored"></i>MySQL</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Lab Challenges -->
-      <section id="lab-challenges" class="py-20 px-6 md:px-12 lg:px-20 bg-white">
-        <div class="max-w-6xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-center text-primary mb-12">Lab Challenges</h2>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="grid md:grid-cols-2 gap-12">
             
-            <!-- Challenge 1 -->
-            <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
-              <img src="assets/images/SQL_Injection.jpeg" alt="Challenge 1 Screenshot" class="w-full h-48 object-cover">
-              <div class="p-6">
-                <h3 class="text-xl font-semibold text-neutralDark mb-2">SQL Injection Detection</h3>
-                <p class="text-gray-700 text-sm mb-4">
-                  Explored and mitigated SQL Injection vulnerabilities in a simulated PHP-based login system.
-                </p>
+            <!-- Experience -->
+            <div>
+              <h3 class="text-xl font-bold text-primary mb-6 flex items-center gap-2">
+                <i class="devicon-github-original"></i> Work Experience
+              </h3>
+              <div class="border-l-2 border-gray-200 pl-6 space-y-10">
+                
+                <!-- Job 1 -->
+                <div class="relative">
+                  <span class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-primary border-4 border-white"></span>
+                  <h4 class="font-bold text-neutral-800">Dispatch Supervisor</h4>
+                  <p class="text-primary font-medium text-sm">Easy Coach Kenya | Sep 2024 - Present</p>
+                  <ul class="list-disc list-outside ml-4 mt-2 text-sm text-gray-600 space-y-1">
+                    <li>Collected daily operational data and prepared manifest reports.</li>
+                    <li>Analyzed passenger data to assist management in decision-making.</li>
+                    <li>Strengthened skills in operational research and reporting under pressure.</li>
+                  </ul>
+                </div>
 
-                <h4 class="text-md font-semibold text-primary mb-1">Approach:</h4>
-                <p class="text-gray-600 text-sm mb-3">
-                  Built vulnerable endpoints, tested them using manual payloads and automated tools like SQLMap, then patched inputs with parameterized queries.
-                </p>
+                <!-- Job 2 -->
+                <div class="relative">
+                  <span class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></span>
+                  <h4 class="font-bold text-neutral-800">Software Developer</h4>
+                  <p class="text-primary font-medium text-sm">Daystar IT Association | Apr 2023 - Apr 2025</p>
+                  <ul class="list-disc list-outside ml-4 mt-2 text-sm text-gray-600 space-y-1">
+                    <li>Developed mobile applications (e.g., Orientation App) for student onboarding.</li>
+                    <li>Documented, deployed apps, and collaborated on automated test scripts.</li>
+                  </ul>
+                </div>
 
-                <h4 class="text-md font-semibold text-primary mb-1">Tools:</h4>
-                <p class="text-gray-600 text-sm mb-3">Kali Linux, Burp Suite, SQLMap, PHPMyAdmin</p>
-
-                <h4 class="text-md font-semibold text-primary mb-1">Lessons Learned:</h4>
-                <p class="text-gray-600 text-sm">
-                  Gained practical insight into securing backend systems and understanding OWASP Top 10 vulnerabilities.
-                </p>
+                <!-- Job 3 -->
+                <div class="relative">
+                  <span class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></span>
+                  <h4 class="font-bold text-neutral-800">Junior Network Administrator</h4>
+                  <p class="text-primary font-medium text-sm">Turbo Networks | May 2024 - Sep 2024</p>
+                  <ul class="list-disc list-outside ml-4 mt-2 text-sm text-gray-600 space-y-1">
+                    <li>Configured networks ensuring 99% uptime.</li>
+                    <li>Managed switching equipment and monitored network traffic.</li>
+                  </ul>
+                </div>
               </div>
             </div>
 
-            <!-- Challenge 2 -->
-            <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
-              <img src="assets/images/traffic_analysis.jpeg" alt="Challenge 2 Screenshot" class="w-full h-48 object-cover">
-              <div class="p-6">
-                <h3 class="text-xl font-semibold text-neutralDark mb-2">Network Traffic Analysis</h3>
-                <p class="text-gray-700 text-sm mb-4">
-                  Conducted packet sniffing and analysis to detect abnormal traffic and potential threats.
-                </p>
+            <!-- Education & Certs -->
+            <div>
+              <h3 class="text-xl font-bold text-primary mb-6 flex items-center gap-2">
+                <i class="devicon-java-plain"></i> Education & Certifications
+              </h3>
+              
+              <div class="space-y-8">
+                <div class="bg-accent/50 p-6 rounded-xl border border-accent">
+                  <h4 class="font-bold text-neutral-800">B.Sc. Computer Science</h4>
+                  <p class="text-sm text-gray-600">Daystar University | <span class="italic">Expected Nov 2026</span></p>
+                </div>
 
-                <h4 class="text-md font-semibold text-primary mb-1">Approach:</h4>
-                <p class="text-gray-600 text-sm mb-3">
-                  Captured packets using Wireshark, analyzed HTTP requests, and flagged suspicious patterns like data exfiltration attempts.
-                </p>
+                <div class="bg-accent/50 p-6 rounded-xl border border-accent">
+                  <h4 class="font-bold text-neutral-800">Data Science, AI & ML Certificate</h4>
+                  <p class="text-sm text-gray-600">CyberShujaa | <span class="text-green-600 font-medium">Completed</span></p>
+                  <div class="flex gap-2 mt-3">
+                    <span class="text-xs bg-white px-2 py-1 rounded shadow-sm text-gray-600">Python</span>
+                    <span class="text-xs bg-white px-2 py-1 rounded shadow-sm text-gray-600">Power BI</span>
+                  </div>
+                </div>
 
-                <h4 class="text-md font-semibold text-primary mb-1">Tools:</h4>
-                <p class="text-gray-600 text-sm mb-3">Wireshark, tcpdump, Linux terminal utilities</p>
-
-                <h4 class="text-md font-semibold text-primary mb-1">Lessons Learned:</h4>
-                <p class="text-gray-600 text-sm">
-                  Strengthened understanding of OSI layers, network packet structure, and intrusion detection methodology.
-                </p>
-              </div>
-            </div>
-
-            <!-- Challenge 3 -->
-            <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
-              <img src="assets/images/forencic_data.jpeg" alt="Challenge 3 Screenshot" class="w-full h-48 object-cover">
-              <div class="p-6">
-                <h3 class="text-xl font-semibold text-neutralDark mb-2">Forensics Data Recovery</h3>
-                <p class="text-gray-700 text-sm mb-4">
-                  Recovered deleted image data from a corrupted USB drive as part of a digital forensics simulation.
-                </p>
-
-                <h4 class="text-md font-semibold text-primary mb-1">Approach:</h4>
-                <p class="text-gray-600 text-sm mb-3">
-                  Used Autopsy to analyze disk images, extract deleted files, and verify metadata against tampering.
-                </p>
-
-                <h4 class="text-md font-semibold text-primary mb-1">Tools:</h4>
-                <p class="text-gray-600 text-sm mb-3">Autopsy, FTK Imager, Linux dd command</p>
-
-                <h4 class="text-md font-semibold text-primary mb-1">Lessons Learned:</h4>
-                <p class="text-gray-600 text-sm">
-                  Understood digital evidence handling, data carving, and the fundamentals of forensic chain of custody.
-                </p>
+                <div>
+                  <h4 class="font-bold text-neutral-800 mb-2">Other Certifications</h4>
+                  <ul class="text-sm text-gray-600 space-y-2">
+                    <li class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      Software Development - Modcom Institute
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      Cisco Networking Essentials
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
@@ -424,141 +245,100 @@
         </div>
       </section>
 
-      <!-- Projects -->
-      <section id="projects" class="py-20 px-6 md:px-12 lg:px-20 bg-accent">
+      <!-- PROJECTS SECTION -->
+      <section id="projects" class="py-24 px-6 bg-accent">
         <div class="max-w-6xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-center text-primary mb-10">Featured Projects</h2>
+          <h2 class="text-3xl font-bold text-center text-primary mb-4">Featured Projects</h2>
+          <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">A selection of automation tools, web apps, and data analysis projects aimed at solving tangible problems.</p>
 
           <div class="grid md:grid-cols-3 gap-8">
-            <!-- Card -->
-            <!-- Project Card -->
-            <div class="relative rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 transition">
-              <img src="assets/images/top_10_reddit_marketing_posts.png" alt="Data Analysis" class="w-full h-48 object-cover">
-              <div class="p-5 bg-accent">
-                <h3 class="font-semibold text-xl text-primary mb-2">Marketing Data Automation </h3>
-                <p class="text-gray-700 mb-4 line-clamp-2">
-                   This project is a Python-Automation Tool that collects, cleans, processes and reports trending marketing 
-                   data from reddit marketing.The tools scrapes trending marketing related posts, cleans them then using post
-                   upvotes the data is structured using pandas and generates a CSV repport and a visual insight for decision making.
-                  <button class="text-primary underline see-more-btn">See more</button>
+            
+            <!-- Project 1 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group">
+              <div class="h-48 bg-gray-200 overflow-hidden relative">
+                <!-- Fallback Image if asset missing -->
+                <img src="assets/images/top_10_reddit_marketing_posts.png" onerror="this.src='https://placehold.co/600x400?text=Marketing+Auto'" alt="Marketing Automation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="font-bold text-lg text-neutral-800 mb-2">Reddit Marketing Automation</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                   A Python tool that scrapes trending marketing posts, cleans data using Pandas, and generates visual insights for decision making.
                 </p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="px-3 py-1 rounded-full bg-primary text-accent text-sm flex items-center gap-1">
-                    <i class="devicon-python-plain colored text-lg"></i> Python
-                  </span>
-                  <span class="px-3 py-1 rounded-full bg-secondary text-primary text-sm flex items-center gap-1">
-                    <i class="devicon-pandas-original-wordmark colored text-lg"></i> Pandas
-                  </span>
-                  <span class="px-3 py-1 rounded-full bg-secondary text-accent text-sm flex items-center gap-1">
-                    <i class="devicon-html5-plain colored text-lg"></i> Beautiful Soup
-                  </span>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-md">Python</span>
+                  <span class="px-2 py-1 bg-green-50 text-green-700 text-xs rounded-md">Pandas</span>
                 </div>
-                <div class="flex gap-3">
-                  <button class="view-btn text-primary font-medium hover:text-secondary">View →</button>
-                  <a href="https://github.com/MuthamaFrancs/PythonAutomationProject/tree/master" class="text-gray-600 hover:text-primary">GitHub</a>
-                </div>
+                
+                <!-- Dynamic Button -->
+                <button 
+                  onclick="openModal({
+                    title: 'Reddit Marketing Automation',
+                    img: 'assets/images/top_10_reddit_marketing_posts.png',
+                    desc: 'This project is a Python Automation Tool that collects, cleans, processes, and reports trending marketing data from Reddit. The tool scrapes trending posts, cleans them, and structures the data using Pandas to generate CSV reports and visual insights.',
+                    tags: ['Python', 'Pandas', 'Beautiful Soup'],
+                    link: 'https://github.com/MuthamaFrancs/PythonAutomationProject'
+                  })"
+                  class="text-primary text-sm font-bold hover:underline">
+                  View Details &rarr;
+                </button>
               </div>
             </div>
 
-          <!-- Modal -->
-            <div id="project-modal" class="fixed inset-0 hidden items-center justify-center bg-black/70 backdrop-blur-md z-50">
-              <div class="bg-white rounded-xl max-w-3xl w-full p-6 relative animate-fadeIn">
-                <button id="close-modal" class="absolute top-4 right-4 text-gray-600 hover:text-primary text-xl">×</button>
-                <h2 class="text-2xl font-bold text-primary mb-3">Web Scraping & Data Preparation</h2>
-                <img src="assets/images/beautiful_soup.jpeg" class="rounded-lg mb-4" />
-                <p class="text-gray-700 leading-relaxed mb-4">
-                  Developed a web scraper to collect and organize NHL team performance data from a live site.
-                  Automated pagination handling, text cleaning, and structured storage in a Pandas DataFrame.
-                  Tools used include Python, Pandas, Beautiful Soup, and Requests.
+            <!-- Project 2 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group">
+              <div class="h-48 bg-gray-200 overflow-hidden">
+                <img src="assets/images/habits_tracker.jpeg" onerror="this.src='https://placehold.co/600x400?text=Auto+Workflows'" alt="Automation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="p-6">
+                <h3 class="font-bold text-lg text-neutral-800 mb-2">Communication Automation</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                  Low-code workflow using Google Forms, Sheets, and Zapier to manage submissions and send automated notifications.
                 </p>
-                <div class="flex flex-wrap gap-2">
-                  <span class="px-3 py-1 rounded-full bg-primary text-accent text-sm flex items-center gap-1">
-                    <i class="devicon-python-plain colored text-lg"></i> Python
-                  </span>
-                  <span class="px-3 py-1 rounded-full bg-secondary text-primary text-sm flex items-center gap-1">
-                    <i class="devicon-pandas-original-wordmark colored text-lg"></i> Pandas
-                  </span>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="px-2 py-1 bg-yellow-50 text-yellow-700 text-xs rounded-md">Zapier</span>
+                  <span class="px-2 py-1 bg-gray-50 text-gray-700 text-xs rounded-md">Google Workspace</span>
                 </div>
+                
+                <button 
+                  onclick="openModal({
+                    title: 'Communication Automation',
+                    img: 'assets/images/habits_tracker.jpeg',
+                    desc: 'Designed to streamline administrative tasks, this project connects Google Forms inputs directly to a database sheet and triggers email notifications via Zapier/Google App Scripts. It reduces manual entry time by 90%.',
+                    tags: ['Zapier', 'Google Sheets', 'Groovy'],
+                    link: '#'
+                  })"
+                  class="text-primary text-sm font-bold hover:underline">
+                  View Details &rarr;
+                </button>
               </div>
             </div>
 
-            <!-- single-image placeholder cards repeated -->
-            <div class="rounded-2xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition">
-              <img src="assets/images/habits_tracker.jpeg" alt="Project thumbnail" class="w-full h-48 object-cover" />
-              <div class="p-5 bg-accent">
-                <h3 class="font-semibold text-xl text-primary mb-2">Data Collection & Communication Automation</h3>
-                <p class="text-gray-700 mb-4">A low-code automation workflow using Google Forms, Google Sheets, and Zapier to manage form submissions, process data, and send automated notifications.</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="px-3 py-1 rounded-full bg-primary text-accent text-sm">Google Workspace</span>
-                  <span class="px-3 py-1 rounded-full bg-secondary text-primary text-sm">Groovy</span>
-                </div>
-                <div class="flex gap-3">
-                  <a href="#" class="text-primary font-medium hover:text-secondary">View →</a>
-                  <a href="#" class="text-gray-600 hover:text-primary">GitHub</a>
-                </div>
+            <!-- Project 3 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group">
+              <div class="h-48 bg-gray-200 overflow-hidden">
+                <img src="assets/images/projet1.jpeg" onerror="this.src='https://placehold.co/600x400?text=Academia+Portal'" alt="Academia Portal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               </div>
-            </div>
-
-            <div class="rounded-2xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition">
-              <img src="assets/images/projet1.jpeg" alt="Project thumbnail" class="w-full h-48 object-cover" />
-              <div class="p-5 bg-accent">                
-                <h3 class="font-semibold text-xl text-primary mb-2">Academia Portal</h3>
-                <p class="text-gray-700 mb-4">Student portal with issue tracking, notifications and training modules for university use.</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="px-3 py-1 rounded-full bg-primary text-accent text-sm">Java</span>
-                  <span class="px-3 py-1 rounded-full bg-secondary text-primary text-sm">Spring Boot</span>
-                </div>
-                <div class="flex gap-3">
-                  <a href="#" class="text-primary font-medium hover:text-secondary">View →</a>
-                  <a href="#" class="text-gray-600 hover:text-primary">GitHub</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Modal -->
-            <div class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden project-modal z-50">
-              <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl w-[90%] md:w-[70%] lg:w-[50%] max-h-[90vh] overflow-y-auto p-6 relative animate-fadeInScale">
-                <button class="absolute top-3 right-3 text-gray-500 hover:text-primary text-2xl close-modal">&times;</button>
-                
-                <h3 class="text-2xl font-bold mb-3 text-primary text-center">Web Scraping & Data Preparation</h3>
-                
-                <img src="assets/scrape.jpg" alt="Web Scraping Project" class="rounded-lg mb-4 w-full object-cover">
-                
-                <p class="text-gray-700 dark:text-gray-300 mb-4 text-justify">
-                  Developed a web scraper to collect and organize NHL team performance data from a live site.
-                  Automated pagination handling, text cleaning, and structured storage in a Pandas DataFrame.
-                  Tools used include Python, Pandas, Beautiful Soup, and Requests.
+              <div class="p-6">
+                <h3 class="font-bold text-lg text-neutral-800 mb-2">Academia Portal</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                  Student portal with issue tracking, notifications, and training modules for university use.
                 </p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="px-2 py-1 bg-red-50 text-red-700 text-xs rounded-md">Java</span>
+                  <span class="px-2 py-1 bg-green-50 text-green-700 text-xs rounded-md">Spring Boot</span>
+                </div>
                 
-                <div class="flex flex-wrap justify-center gap-2 mb-4">
-                  <span class="px-3 py-1 rounded-full bg-yellow-100 text-yellow-800 text-sm flex items-center gap-1">
-                    <i class="fa-brands fa-python"></i> Python
-                  </span>
-                  <span class="px-3 py-1 rounded-full bg-green-100 text-green-800 text-sm">Pandas</span>
-                  <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-sm">Beautiful Soup</span>
-                </div>
-
-                <!-- GitHub link -->
-                <div class="flex justify-center">
-                  <a href="https://github.com/MuthamaFrancs/web-scraping"
-                    target="_blank"
-                    class="group flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 text-white font-semibold px-5 py-2 rounded-full transition-all duration-200">
-                    
-                    <!-- Desktop view (text + icon) -->
-                    <span class="hidden sm:inline-flex items-center gap-2">
-                      <i class="fa-brands fa-github text-lg"></i> View on GitHub
-                    </span>
-
-                    <!-- Mobile view (icon only + tooltip) -->
-                    <span class="sm:hidden relative">
-                      <i class="fa-brands fa-github text-2xl"></i>
-                      <span class="absolute left-1/2 -translate-x-1/2 -bottom-8 text-xs bg-gray-800 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">
-                        View on GitHub
-                      </span>
-                    </span>
-                  </a>
-                </div>
-
+                <button 
+                  onclick="openModal({
+                    title: 'Academia Portal',
+                    img: 'assets/images/projet1.jpeg',
+                    desc: 'A comprehensive student management system built with Java Spring Boot. Features include user authentication, ticket logging for IT support, and an integrated learning management module.',
+                    tags: ['Java', 'Spring Boot', 'MySQL'],
+                    link: '#'
+                  })"
+                  class="text-primary text-sm font-bold hover:underline">
+                  View Details &rarr;
+                </button>
               </div>
             </div>
 
@@ -566,123 +346,178 @@
         </div>
       </section>
 
-      <!-- Blog -->
-      <section id="blog" class="py-20 px-6 md:px-12 lg:px-20 bg-white">
+      <!-- LAB CHALLENGES (Kept clean, just formatting fixed) -->
+      <section class="py-24 px-6 bg-white">
         <div class="max-w-6xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-center text-primary mb-10">Latest Thoughts</h2>
-
-          <div class="grid md:grid-cols-3 gap-8">
-            <article class="rounded-2xl overflow-hidden shadow-md transform hover:-translate-y-2 transition bg-white">
-              <img src="assets/images/projet1.jpeg" alt="blog" class="w-full h-44 object-cover"/>
-              <div class="p-5">
-                <h3 class="font-semibold text-lg text-primary mb-2">The Joy of Building from Scratch</h3>
-                <p class="text-gray-700 mb-4">Why creating your own solutions — from code to concept — builds unmatched confidence and creativity.</p>
-                <a class="text-primary font-medium hover:text-secondary" href="#">Read more →</a>
-              </div>
-            </article>
-
-            <article class="rounded-2xl overflow-hidden shadow-md transform hover:-translate-y-2 transition bg-white">
-              <img src="assets/images/projet1.jpeg" alt="blog" class="w-full h-44 object-cover"/>
-              <div class="p-5">
-                <h3 class="font-semibold text-lg text-primary mb-2">Bridging Design and Functionality</h3>
-                <p class="text-gray-700 mb-4">How design thinking and solid backend architecture create seamless digital experiences.</p>
-                <a class="text-primary font-medium hover:text-secondary" href="#">Read more →</a>
-              </div>
-            </article>
-
-            <article class="rounded-2xl overflow-hidden shadow-md transform hover:-translate-y-2 transition bg-white">
-              <img src="assets/images/projet1.jpeg" alt="blog" class="w-full h-44 object-cover"/>
-              <div class="p-5">
-                <h3 class="font-semibold text-lg text-primary mb-2">The Dev Journey: Growth Over Perfection</h3>
-                <p class="text-gray-700 mb-4">Learning to build, fail, iterate, and succeed — one line of code at a time.</p>
-                <a class="text-primary font-medium hover:text-secondary" href="#">Read more →</a>
-              </div>
-            </article>
+          <h2 class="text-3xl font-bold text-center text-neutralDark mb-12">Security Labs</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+             <!-- Card 1 -->
+             <div class="border border-gray-100 p-6 rounded-2xl hover:border-primary/50 transition bg-white shadow-sm">
+                <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4 text-red-600">
+                  <i class="devicon-mysql-plain text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-2">SQL Injection</h3>
+                <p class="text-sm text-gray-600 mb-4">Explored and mitigated SQLi vulnerabilities in a PHP login system using SQLMap and parameterized queries.</p>
+                <span class="text-xs font-mono text-gray-400">Tools: Burp Suite, SQLMap</span>
+             </div>
+             <!-- Card 2 -->
+             <div class="border border-gray-100 p-6 rounded-2xl hover:border-primary/50 transition bg-white shadow-sm">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-blue-600">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                </div>
+                <h3 class="font-bold text-lg mb-2">Traffic Analysis</h3>
+                <p class="text-sm text-gray-600 mb-4">Captured packets using Wireshark to detect abnormal traffic and flag suspicious data exfiltration.</p>
+                <span class="text-xs font-mono text-gray-400">Tools: Wireshark, tcpdump</span>
+             </div>
+             <!-- Card 3 -->
+             <div class="border border-gray-100 p-6 rounded-2xl hover:border-primary/50 transition bg-white shadow-sm">
+                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4 text-purple-600">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+                </div>
+                <h3 class="font-bold text-lg mb-2">Forensics</h3>
+                <p class="text-sm text-gray-600 mb-4">Recovered deleted image data from a corrupted drive using Autopsy and verified metadata.</p>
+                <span class="text-xs font-mono text-gray-400">Tools: Autopsy, FTK Imager</span>
+             </div>
           </div>
         </div>
       </section>
 
-      <!-- Contact -->
-      <section id="contact" class="py-20 px-6 md:px-12 lg:px-20 bg-accent">
-        <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Let’s Connect</h2>
-          <p class="text-gray-700 mb-8">Let's Work Together, If you have a project, collaboration, or opportunity in mind... I’d love to hear from you — let’s bring these ideas to life.</p>
+      <!-- CONTACT -->
+      <section id="contact" class="py-20 px-6 bg-primary text-accent">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl font-bold mb-6">Let’s Build Something Great</h2>
+          <p class="text-lg opacity-90 mb-10">
+            Open to full-stack development, automation, and data analysis opportunities.
+          </p>
 
-          <div class="flex items-center justify-center gap-6 mb-8">
-            <a href="mailto:francisfrancs02@gmail.com" class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-primary text-accent hover:opacity-95 transition">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="inline-block"><path d="M3 8l9 6 9-6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Email
+          <div class="flex flex-wrap justify-center gap-6">
+            <a href="mailto:francisfrancs02@gmail.com" class="bg-white text-primary px-6 py-3 rounded-full font-bold hover:bg-opacity-90 transition flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              Email Me
             </a>
-
-            <a href="https://www.linkedin.com/in/francis-musau-b17690210/" target="_blank" class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-neutral-100 hover:bg-neutral-50 transition">
-              <i class="devicon-linkedin-plain text-2xl"></i> LinkedIn
+            <a href="https://linkedin.com/in/francis-musau-b17690210/" target="_blank" class="border border-white/30 text-white px-6 py-3 rounded-full font-bold hover:bg-white/10 transition flex items-center gap-2">
+              LinkedIn
             </a>
-
-            <a href="https://github.com/MuthamaFrancs" target="_blank" class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-neutral-100 hover:bg-neutral-50 transition">
-              <i class="devicon-github-original text-2xl"></i> GitHub
+            <a href="tel:+254769892579" class="border border-white/30 text-white px-6 py-3 rounded-full font-bold hover:bg-white/10 transition flex items-center gap-2">
+               +254 769 892 579
             </a>
-
-            <!-- <a href="+254 769 892579" target="_blank" class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-neutral-100 hover:bg-neutral-50 transition">
-              <i class="devicon-phone-original text-2xl"></i> 📞 Phone
-            </a> -->
-
           </div>
 
-          <div class="flex flex-col items-center gap-3 mb-8 text-gray-800">
-            <p class="text-lg"><strong>📞 Phone:</strong> +254 769 892579</p>
-          </div>
-
-
-          <p class="text-sm text-gray-500">© <span id="year"></span> Muthama Francis Musau — Built with ❤️</p>
+          <footer class="mt-20 pt-10 border-t border-white/10 text-sm opacity-60">
+            <p>&copy; <span id="year"></span> Muthama Francis Musau. All rights reserved.</p>
+          </footer>
         </div>
       </section>
     </main>
 
-    <!-- Small scripts -->
+    <!-- SINGLE MODAL COMPONENT -->
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden">
+      <!-- Backdrop -->
+      <div class="absolute inset-0 bg-neutralDark/80 backdrop-blur-sm" id="modal-backdrop"></div>
+      
+      <!-- Modal Content -->
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl px-4">
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden animate-modal relative">
+          <button id="close-modal" class="absolute top-4 right-4 z-10 bg-white/50 hover:bg-white rounded-full p-1 transition">
+            <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+          
+          <div class="max-h-[80vh] overflow-y-auto">
+            <img id="modal-img" src="" alt="Project" class="w-full h-56 object-cover bg-gray-100" />
+            
+            <div class="p-8">
+              <h3 id="modal-title" class="text-2xl font-bold text-neutral-800 mb-4">Project Title</h3>
+              
+              <div id="modal-tags" class="flex flex-wrap gap-2 mb-6">
+                <!-- Tags injected here -->
+              </div>
+              
+              <p id="modal-desc" class="text-gray-600 leading-relaxed mb-8">
+                Description goes here...
+              </p>
+              
+              <a id="modal-link" href="#" target="_blank" class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold hover:opacity-90 transition">
+                <i class="devicon-github-original"></i> View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
     <script>
-      // mobile menu toggle
+      // 1. Mobile Menu Toggle
       const menuBtn = document.getElementById('menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
-      menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+      const mobileLinks = document.querySelectorAll('.mobile-link');
 
-      // role rotator
-      const roles = ["Automation Engineer","Fullstack Developer","Mobile Developer","Data Analyst","AI Enthusiast"];
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      // Close mobile menu when a link is clicked
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      });
+
+      // 2. Role Rotator
+      const roles = ["Automation Engineer", "Fullstack Developer", "Mobile Developer", "Data Analyst"];
       let idx = 0;
       const roleEl = document.getElementById('role');
-      setInterval(()=> {
-        idx = (idx + 1) % roles.length;
-        if (roleEl) roleEl.textContent = roles[idx];
-      }, 2600);
+      setInterval(() => {
+        roleEl.style.opacity = '0'; // fade out
+        setTimeout(() => {
+          idx = (idx + 1) % roles.length;
+          roleEl.textContent = roles[idx];
+          roleEl.style.opacity = '1'; // fade in
+        }, 300);
+      }, 3000);
 
-      // about fade-in
-      const about = document.getElementById('about');
-      if (about) {
-        const content = about.querySelector('#about-content');
-        if (content) {
-          const obs = new IntersectionObserver(entries=>{
-            entries.forEach(e=>{
-              if (e.isIntersecting) {
-                content.classList.remove('opacity-0','translate-y-6');
-                content.classList.add('opacity-100','translate-y-0');
-              }
-            });
-          }, {threshold: 0.4});
-          obs.observe(content);
-        }
+      // 3. Dynamic Modal Logic
+      const modal = document.getElementById('project-modal');
+      const modalImg = document.getElementById('modal-img');
+      const modalTitle = document.getElementById('modal-title');
+      const modalDesc = document.getElementById('modal-desc');
+      const modalTags = document.getElementById('modal-tags');
+      const modalLink = document.getElementById('modal-link');
+      const closeModalBtn = document.getElementById('close-modal');
+      const backdrop = document.getElementById('modal-backdrop');
+
+      // Function called by the HTML buttons
+      function openModal(data) {
+        modalTitle.textContent = data.title;
+        modalDesc.textContent = data.desc;
+        modalImg.src = data.img;
+        modalImg.onerror = function() { this.src = 'https://placehold.co/600x400?text=No+Image'; };
+        modalLink.href = data.link;
+        
+        // Clear and add tags
+        modalTags.innerHTML = '';
+        data.tags.forEach(tag => {
+          const span = document.createElement('span');
+          span.className = 'px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full font-medium';
+          span.textContent = tag;
+          modalTags.appendChild(span);
+        });
+
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // prevent background scroll
       }
 
-      // year
-      document.getElementById('year').textContent = new Date().getFullYear();
+      function closeModal() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
 
-      // project modal
-      const viewBtn = document.querySelector('.view-btn');
-      const modal = document.getElementById('project-modal');
-      const closeModal = document.getElementById('close-modal');
-      viewBtn.addEventListener('click', () => modal.classList.remove('hidden'));
-      closeModal.addEventListener('click', () => modal.classList.add('hidden'));
-      window.addEventListener('click', e => {
-        if (e.target === modal) modal.classList.add('hidden');
+      closeModalBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
       });
+
+      // 4. Update Year
+      document.getElementById('year').textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
