@@ -28,6 +28,9 @@
       href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
     />
 
+    <a href="/style/style.css"></a>
+    <script src="/scripts/main.js"></script>
+
     <style>
       html {
         scroll-behavior: smooth;
@@ -39,6 +42,13 @@
       .tech:hover {
         transform: translateY(-6px) scale(1.05);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.3s ease-in-out;
       }
     </style>
   </head>
@@ -89,9 +99,9 @@
             </h1>
 
             <p class="text-lg md:text-xl text-neutral-700 leading-relaxed max-w-prose">
-              I am a Full-stack software developer. I am a passionate about technology, building software that solves real world problems.
-              I am value-driven always yearning to learn and grow in this ever-evolving field of technology. With <span>3 years of proffesional experience<span>,I have mastered Object Oriented Programming using Java and Mobile
-              Programming using Flutter.
+              I am a Full-stack software developer. I am a passionate about technology and projects that solve real world problems.
+              With <span>3 years of professional experience<span>, I have mastered Object Oriented Programming, Mobile Programming
+              and Process Automation . 
             </p>
 
             <!-- Role + CTA -->
@@ -210,7 +220,7 @@
             <div class="border-l-4 border-primary pl-6 space-y-4">
               <div>
                 <h4 class="font-semibold text-lg text-neutralDark">Daystar University</h4>
-                <p class="text-gray-700">B.Sc. Computer Science — <span class="italic">Ongoing</span></p>
+                <p class="text-gray-700">B.Sc. Computer Science — <span class="italic">Expected Graduation Nov 26</span></p>
                 <p class="text-sm text-gray-600">Relevant coursework: Software Engineering, Data Structures, Mobile App Development</p>
               </div>
             </div>
@@ -218,7 +228,7 @@
             <div class="border-l-4 border-primary pl-6 space-y-4">
               <div>
                 <h4 class="font-semibold text-lg text-neutralDark">CyberShujaa</h4>
-                <p class="text-gray-700">Certificate Data Science, AI & ML — <span class="italic">Ongoing</span></p>
+                <p class="text-gray-700">Certificate Data Science, AI & ML — <span class="italic"> Completed</span></p>
                 <p class="text-sm text-gray-600">Relevant coursework: Data Anaytics, Data Wrangling, Business Intelligence, Data Visualization</p>
                 <div class="flex flex-wrap gap-3 mt-2" >
                   <span class="tech flex items-center gap-2 bg-white px-3 py-2 rounded-full shadow-sm"><i class="devicon-python-plain colored"></i>Python</span>
@@ -259,6 +269,17 @@
               <i class="devicon-github-original text-2xl"></i> Work Experience
             </h3>
             <div class="border-l-4 border-primary pl-6 space-y-6">
+              <div>
+                <h4 class="font-semibold text-lg text-neutralDark">Dispatch Supervisor — Easy Coach Kenya</h4>
+                <p class="text-gray-700 text-sm italic">September 2025- Ongoing</p>
+                <ul class="list-disc list-inside text-gray-700 text-sm mt-2 space-y-1">
+                  <li>Collected daily operational data and prepared manifest reposts with depature information, customer data and manifest reports.</li>
+                  <li>Analyzed dispatch and passenger data to help management in decision making and performance monitoring.</li>
+                  <li>Contributed to maintaining data accuracy for stake holder decision making.</li>
+                  <li>Strengthened skills in operational research, reporting under pressure, and practical data use.</li>
+                </ul>
+              </div>
+              <!-- DITA Experience -->
               <div>
                 <h4 class="font-semibold text-lg text-neutralDark">Software Developer — Daystar IT Association</h4>
                 <p class="text-gray-700 text-sm italic">April 2023- April 2025</p>
@@ -410,19 +431,53 @@
 
           <div class="grid md:grid-cols-3 gap-8">
             <!-- Card -->
-            <div class="rounded-2xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition">
-              <img src="assets/images/beautiful_soup.jpeg" alt="Project thumbnail" class="w-full h-48 object-cover" />
+            <!-- Project Card -->
+            <div class="relative rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 transition">
+              <img src="assets/images/top_10_reddit_marketing_posts.png" alt="Data Analysis" class="w-full h-48 object-cover">
               <div class="p-5 bg-accent">
-                <h3 class="font-semibold text-xl text-primary mb-2">Scraping & Wrangling</h3>
-                <p class="text-gray-700 mb-4">Data scraping and wrangling pipelines — cleaning, transforming and storing datasets for analytics.</p>
+                <h3 class="font-semibold text-xl text-primary mb-2">Marketing Data Automation </h3>
+                <p class="text-gray-700 mb-4 line-clamp-2">
+                   This project is a Python-Automation Tool that collects, cleans, processes and reports trending marketing 
+                   data from reddit marketing.The tools scrapes trending marketing related posts, cleans them then using post
+                   upvotes the data is structured using pandas and generates a CSV repport and a visual insight for decision making.
+                  <button class="text-primary underline see-more-btn">See more</button>
+                </p>
                 <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="px-3 py-1 rounded-full bg-primary text-accent text-sm">Python</span>
-                  <span class="px-3 py-1 rounded-full bg-secondary text-primary text-sm">Pandas</span>
-                  <span class="px-3 py-1 rounded-full bg-secondary text-accent text-sm">Beautiful Soup</span>
+                  <span class="px-3 py-1 rounded-full bg-primary text-accent text-sm flex items-center gap-1">
+                    <i class="devicon-python-plain colored text-lg"></i> Python
+                  </span>
+                  <span class="px-3 py-1 rounded-full bg-secondary text-primary text-sm flex items-center gap-1">
+                    <i class="devicon-pandas-original-wordmark colored text-lg"></i> Pandas
+                  </span>
+                  <span class="px-3 py-1 rounded-full bg-secondary text-accent text-sm flex items-center gap-1">
+                    <i class="devicon-html5-plain colored text-lg"></i> Beautiful Soup
+                  </span>
                 </div>
                 <div class="flex gap-3">
-                  <a href="#" class="text-primary font-medium hover:text-secondary">View →</a>
-                  <a href="#" class="text-gray-600 hover:text-primary">GitHub</a>
+                  <button class="view-btn text-primary font-medium hover:text-secondary">View →</button>
+                  <a href="https://github.com/MuthamaFrancs/PythonAutomationProject/tree/master" class="text-gray-600 hover:text-primary">GitHub</a>
+                </div>
+              </div>
+            </div>
+
+          <!-- Modal -->
+            <div id="project-modal" class="fixed inset-0 hidden items-center justify-center bg-black/70 backdrop-blur-md z-50">
+              <div class="bg-white rounded-xl max-w-3xl w-full p-6 relative animate-fadeIn">
+                <button id="close-modal" class="absolute top-4 right-4 text-gray-600 hover:text-primary text-xl">×</button>
+                <h2 class="text-2xl font-bold text-primary mb-3">Web Scraping & Data Preparation</h2>
+                <img src="assets/images/beautiful_soup.jpeg" class="rounded-lg mb-4" />
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  Developed a web scraper to collect and organize NHL team performance data from a live site.
+                  Automated pagination handling, text cleaning, and structured storage in a Pandas DataFrame.
+                  Tools used include Python, Pandas, Beautiful Soup, and Requests.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 rounded-full bg-primary text-accent text-sm flex items-center gap-1">
+                    <i class="devicon-python-plain colored text-lg"></i> Python
+                  </span>
+                  <span class="px-3 py-1 rounded-full bg-secondary text-primary text-sm flex items-center gap-1">
+                    <i class="devicon-pandas-original-wordmark colored text-lg"></i> Pandas
+                  </span>
                 </div>
               </div>
             </div>
@@ -431,10 +486,10 @@
             <div class="rounded-2xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition">
               <img src="assets/images/habits_tracker.jpeg" alt="Project thumbnail" class="w-full h-48 object-cover" />
               <div class="p-5 bg-accent">
-                <h3 class="font-semibold text-xl text-primary mb-2">Habits Tracker</h3>
-                <p class="text-gray-700 mb-4">A habit-building web app designed to help users track and develop daily routines.</p>
+                <h3 class="font-semibold text-xl text-primary mb-2">Data Collection & Communication Automation</h3>
+                <p class="text-gray-700 mb-4">A low-code automation workflow using Google Forms, Google Sheets, and Zapier to manage form submissions, process data, and send automated notifications.</p>
                 <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="px-3 py-1 rounded-full bg-primary text-accent text-sm">Grails</span>
+                  <span class="px-3 py-1 rounded-full bg-primary text-accent text-sm">Google Workspace</span>
                   <span class="px-3 py-1 rounded-full bg-secondary text-primary text-sm">Groovy</span>
                 </div>
                 <div class="flex gap-3">
@@ -446,7 +501,7 @@
 
             <div class="rounded-2xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition">
               <img src="assets/images/projet1.jpeg" alt="Project thumbnail" class="w-full h-48 object-cover" />
-              <div class="p-5 bg-accent">
+              <div class="p-5 bg-accent">                
                 <h3 class="font-semibold text-xl text-primary mb-2">Academia Portal</h3>
                 <p class="text-gray-700 mb-4">Student portal with issue tracking, notifications and training modules for university use.</p>
                 <div class="flex flex-wrap gap-2 mb-4">
@@ -459,6 +514,54 @@
                 </div>
               </div>
             </div>
+
+            <!-- Modal -->
+            <div class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden project-modal z-50">
+              <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl w-[90%] md:w-[70%] lg:w-[50%] max-h-[90vh] overflow-y-auto p-6 relative animate-fadeInScale">
+                <button class="absolute top-3 right-3 text-gray-500 hover:text-primary text-2xl close-modal">&times;</button>
+                
+                <h3 class="text-2xl font-bold mb-3 text-primary text-center">Web Scraping & Data Preparation</h3>
+                
+                <img src="assets/scrape.jpg" alt="Web Scraping Project" class="rounded-lg mb-4 w-full object-cover">
+                
+                <p class="text-gray-700 dark:text-gray-300 mb-4 text-justify">
+                  Developed a web scraper to collect and organize NHL team performance data from a live site.
+                  Automated pagination handling, text cleaning, and structured storage in a Pandas DataFrame.
+                  Tools used include Python, Pandas, Beautiful Soup, and Requests.
+                </p>
+                
+                <div class="flex flex-wrap justify-center gap-2 mb-4">
+                  <span class="px-3 py-1 rounded-full bg-yellow-100 text-yellow-800 text-sm flex items-center gap-1">
+                    <i class="fa-brands fa-python"></i> Python
+                  </span>
+                  <span class="px-3 py-1 rounded-full bg-green-100 text-green-800 text-sm">Pandas</span>
+                  <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-sm">Beautiful Soup</span>
+                </div>
+
+                <!-- GitHub link -->
+                <div class="flex justify-center">
+                  <a href="https://github.com/MuthamaFrancs/web-scraping"
+                    target="_blank"
+                    class="group flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 text-white font-semibold px-5 py-2 rounded-full transition-all duration-200">
+                    
+                    <!-- Desktop view (text + icon) -->
+                    <span class="hidden sm:inline-flex items-center gap-2">
+                      <i class="fa-brands fa-github text-lg"></i> View on GitHub
+                    </span>
+
+                    <!-- Mobile view (icon only + tooltip) -->
+                    <span class="sm:hidden relative">
+                      <i class="fa-brands fa-github text-2xl"></i>
+                      <span class="absolute left-1/2 -translate-x-1/2 -bottom-8 text-xs bg-gray-800 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">
+                        View on GitHub
+                      </span>
+                    </span>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -543,7 +646,7 @@
       menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
       // role rotator
-      const roles = ["Software Engineer","Fullstack Developer","Mobile Developer","Data Analyst","AI Enthusiast"];
+      const roles = ["Automation Engineer","Fullstack Developer","Mobile Developer","Data Analyst","AI Enthusiast"];
       let idx = 0;
       const roleEl = document.getElementById('role');
       setInterval(()=> {
@@ -570,6 +673,16 @@
 
       // year
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // project modal
+      const viewBtn = document.querySelector('.view-btn');
+      const modal = document.getElementById('project-modal');
+      const closeModal = document.getElementById('close-modal');
+      viewBtn.addEventListener('click', () => modal.classList.remove('hidden'));
+      closeModal.addEventListener('click', () => modal.classList.add('hidden'));
+      window.addEventListener('click', e => {
+        if (e.target === modal) modal.classList.add('hidden');
+      });
     </script>
   </body>
 </html>
