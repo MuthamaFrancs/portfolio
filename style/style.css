@@ -34,3 +34,11 @@ span[role="tooltip"] {
 .modal-content.animate-fadeInScale {
   animation: fadeInScale 0.3s ease-out;
 }
+
+.birthday-mode img[alt="Francis Musau"]::after {
+     content: "🥳"; 
+     position: absolute; 
+     top: -20px; 
+     right: 0; 
+     font-size: 3rem;
+}

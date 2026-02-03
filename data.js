@@ -1,11 +1,14 @@
-export const data = {
+export const profile = {
     name: "Muthama Francis",
-    role: "Full Stack Developer & Automation Engineer",
+    role: "an Automation Engineer",//Primary role
+    roles : ["a Full Stack Developer", "a Data Analyst", "a Mobile Developer"],
     email: "francisfrancs02@gmail.com",
     phone: "+254769892579",
     linkedin: "https://www.linkedin.com/in/muthama-francis-5b4b25210/",
-    github: "https://github.com/MuthamaFrancs"
-
+    github: "https://github.com/MuthamaFrancs",
+    githubUsername: "MuthamaFrancs",
+    profileImage: "assets/images/profile_hq.png",
+    bio: "I am a Full-stack software developer passionate about technology that solves real-world problems. With 3 years of experience, I specialize in Object Oriented Programming, Mobile Development, and Process Automation."
 }
 
 export const projects = [
@@ -26,5 +29,15 @@ export const projects = [
     description: "Student portal with issue tracking, notifications and training modules for university use.",
     tech: ["Java", "Spring Boot", "MySQL"],
     link: "https://github.com/MuthamaFrancs/Academia"
+  },
+  {
+    id: 3,
+    title: "Orientation App",
+    category: "Mobile App",
+    image: "assets/images/projet2.jpeg",
+    description: "A mobile app to help new students navigate campus facilities and access resources easily.",
+    tech: ["Flutter", "Dart", "Firebase"],
+    link: "https://github.com/dita-daystaruni/orientation_ap",
   }
+
 ];
