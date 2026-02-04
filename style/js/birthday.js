@@ -19,7 +19,7 @@
         // DATES
         birthdayDate: new Date('2026-02-06T00:00:00'),
         endDate: new Date('2026-02-10T23:59:59'),
-        birthYear: 2002, 
+        birthYear: 2004, 
         
         // VISUALS: Warm Sunset Gradient (Salmon -> Orange)
         gradientCss: 'linear-gradient(to right, #FF5F6D, #FFC371)', 
@@ -48,9 +48,9 @@
     // WISHLIST DATA
     const WISHLIST_ITEMS = [
         { id: '1', title: 'Smart Watch', category: 'Tech', img: 'assets/images/sw2.jpeg', link: '#', price: 'Ile design nitakeep time...' },
-        { id: '2', title: 'Water Bottle', category: 'Lifestyle', img: 'assets/images/waterbottle2.jpg', link: '', price: 'I will Hydrate ipasavyo.' },
-        { id: '3', title: 'Vans', category: 'Lifestyle', img: 'assets/images/vans.jpeg', link: '#', price: 'Walking by Faith number 41.😂 Si ata wewe unaona zinanikaa tu 😂 ' },
-        { id: '4', title: 'Wireless Keyboard', category: 'Tech', img: 'assets/images/wkb.jpeg', link: '#', price: 'Nitacode I Promise' },
+        { id: '2', title: 'Water Bottle', category: 'Health', img: 'assets/images/waterbottle2.jpg', link: '', price: 'Sitaki dryness hii mwaka😔.' },
+        { id: '3', title: 'Vans', category: 'Lifestyle', img: 'assets/images/vans.jpeg', link: '#', price: 'Walking by Faith.😂 Si ata wewe unaona zinanikaa tu 😂aya number ni 41 ' },
+        { id: '4', title: 'Wireless Keyboard', category: 'Tech', img: 'assets/images/wkb.jpeg', link: '#', price: 'Nitacode I Promise. For Colabs find the embedded githib links 😁' },
         { id: '5', title: 'Jersey', category: 'Lifestyle', img: 'assets/images/jsy.jpeg', link: '#', price: 'I think I wanna start supporting EPL 💭' },
         { id: '6', title: 'Lip Moischeraiza', category: 'Lifestyle', img: 'assets/images/cs3.jpeg', link: '#', price: 'Kupaka Glossy💄' }
     ];
@@ -527,7 +527,7 @@
                 badge.id = 'birthday-skill';
                 badge.className = 'tech-card flex items-center gap-2 px-4 py-2 rounded-lg shadow-sm text-white animate-pulse';
                 badge.style.background = CONFIG.gradientCss;
-                badge.innerHTML = '<span class="text-xl">🍰</span> <span class="text-sm font-bold">Cake Driven Dev</span>';
+                badge.innerHTML = '<span class="text-xl">🍰</span> <span class="text-sm font-bold">Flutter me!</span>';
                 skillContainer.appendChild(badge);
             }
         } else {
