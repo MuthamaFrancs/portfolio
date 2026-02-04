@@ -293,10 +293,13 @@
                         </div>
                     </div>
                 </div>
+                
             `;
+            
         });
         html += `</div></div>`;
         section.innerHTML = html;
+        
     }
 
     function renderGuestbookHTML(section) {
@@ -527,7 +530,7 @@
                 badge.id = 'birthday-skill';
                 badge.className = 'tech-card flex items-center gap-2 px-4 py-2 rounded-lg shadow-sm text-white animate-pulse';
                 badge.style.background = CONFIG.gradientCss;
-                badge.innerHTML = '<span class="text-xl">🍰</span> <span class="text-sm font-bold">Flutter me!</span>';
+                badge.innerHTML = '<span class="text-xl">🍰</span> <span class="text-sm font-bold">Flutter me!</span> <span class="text-xl">💸</span>';
                 skillContainer.appendChild(badge);
             }
         } else {
