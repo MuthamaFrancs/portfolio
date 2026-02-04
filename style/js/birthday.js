@@ -49,9 +49,9 @@
     const WISHLIST_ITEMS = [
         { id: '1', title: 'Smart Watch', category: 'Tech', img: 'assets/images/sw2.jpeg', link: '#', price: 'Ile design nitakeep time...' },
         { id: '2', title: 'Water Bottle', category: 'Lifestyle', img: 'assets/images/waterbottle2.jpg', link: '', price: 'I will Hydrate ipasavyo.' },
-        { id: '3', title: 'Vans', category: 'Lifestyle', img: 'assets/images/vans.jpeg', link: '#', price: 'Walking by Faith.😂 Si ata wewe unaona zinanikaa tu 😂 ' },
+        { id: '3', title: 'Vans', category: 'Lifestyle', img: 'assets/images/vans.jpeg', link: '#', price: 'Walking by Faith number 41.😂 Si ata wewe unaona zinanikaa tu 😂 ' },
         { id: '4', title: 'Wireless Keyboard', category: 'Tech', img: 'assets/images/wkb.jpeg', link: '#', price: 'Nitacode I Promise' },
-        { id: '5', title: 'Jersey', category: 'Lifestyle', img: 'assets/images/jsy.jpeg', link: '#', price: 'I think I wanna start supporting a team💭' },
+        { id: '5', title: 'Jersey', category: 'Lifestyle', img: 'assets/images/jsy.jpeg', link: '#', price: 'I think I wanna start supporting EPL 💭' },
         { id: '6', title: 'Lip Moischeraiza', category: 'Lifestyle', img: 'assets/images/cs3.jpeg', link: '#', price: 'Kupaka Glossy💄' }
     ];
 
