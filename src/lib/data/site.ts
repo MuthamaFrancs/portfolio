@@ -28,7 +28,7 @@ export const profile = {
     process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://www.instagram.com/",
   cvUrl:
     process.env.NEXT_PUBLIC_CV_URL ??
-    "https://drive.google.com/document/d/1cGT19ZYfWyZloZDafufmEOyCONFTQTvW2Dmb8sLnISI/view",
+    "https://docs.google.com/document/d/1cGT19ZYfWyZloZDafufmEOyCONFTQTvW2Dmb8sLnISI/edit?usp=sharing",
   /** File must live in `public/assets/images/` (see also `assets/images/` in repo). */
   profileImage: publicAsset("/assets/images/profileyaalast.jpeg"),
 } as const;
@@ -168,14 +168,14 @@ export const certifications: Certification[] = [
   {
     name: "Data and AI Certificate",
     issuer: "CyberShujaa",
-    issuerHref: "https://cybershujaa.org/",
+    issuerHref: "https://cybershujaa.co.ke/",
     skills: "Python · Power BI",
     period: "Sep 2025 - Dec 2025",
   },
   {
     name: "Software Development Certificate",
     issuer: "Modcom Institute",
-    issuerHref: "https://www.modcominstitute.com/",
+    issuerHref: "https://modcom.co.ke/",
     period: "May 2022 – Aug 2022",
   },
   {
@@ -200,7 +200,7 @@ export const experience = [
   {
     role: "Software Developer",
     company: "Daystar IT Association",
-    companyHref: "https://www.daystar.ac.ke/",
+    companyHref: "https://dita.co.ke/",
     period: "Apr 2023 – Apr 2025",
     bullets: [
       "Built mobile experiences (including the Orientation App) for student onboarding.",

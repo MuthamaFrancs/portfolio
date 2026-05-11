@@ -15,29 +15,43 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
   "https://muthamafrancs.github.io/portfolio/";
 
+const metadataBase = new URL(siteUrl.endsWith("/") ? siteUrl : `${siteUrl}/`);
+/** Public preview image for Open Graph, Twitter, messengers (same file as hero profile). */
+const ogProfileImage = new URL(
+  "assets/images/profileyaalast.jpeg",
+  metadataBase,
+).href;
+
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase,
   title: {
-    default: "Muthama Francis Musau — Full-stack Developer",
+    default: "Muthama Francis Musau — Software Developer",
     template: "%s · Muthama Francis Musau",
   },
   description:
     "Portfolio of Muthama Francis Musau — full-stack developer building fintech, education, and operations software. Hackathon winner, product-minded engineer.",
   authors: [{ name: "Muthama Francis Musau" }],
   openGraph: {
-    title: "Muthama Francis Musau — Full-stack Developer",
+    title: "Muthama Francis Musau — Software Developer",
     description:
       "Modern portfolio showcasing projects, experience, and engineering craft.",
     url: siteUrl,
     siteName: "Muthama Francis Musau",
     locale: "en_KE",
     type: "website",
+    images: [
+      {
+        url: ogProfileImage,
+        alt: "Muthama Francis Musau — profile photo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Muthama Francis Musau — Full-stack Developer",
     description:
       "Full-stack developer · fintech, education, and automation systems.",
+    images: [ogProfileImage],
   },
   robots: { index: true, follow: true },
 };
