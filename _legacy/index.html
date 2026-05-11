@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Francis Musau — Software Developer & Systems Builder</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#5E6F4E", // Your signature Olive
+                        accent: "#F6F3EB",  // Soft Ivory
+                        surface: "#ffffff",
+                        neutralDark: "#1a1a1a",
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Instrument Serif', 'serif'],
+                    }
+                },
+            },
+        };
+    </script>
+
+    <style>
+        .section-number { @apply text-xs font-bold tracking-[0.2em] text-primary/50 uppercase mb-4 block; }
+        .display-xl { font-family: 'Instrument Serif', serif; @apply text-5xl md:text-8xl leading-[0.9] text-neutralDark; }
+        .display-lg { font-family: 'Instrument Serif', serif; @apply text-4xl md:text-6xl leading-tight text-neutralDark; }
+        .glass-nav { @apply fixed w-full z-50 top-0 bg-accent/80 backdrop-blur-md border-b border-primary/10; }
+        .card-hover { @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-transparent hover:border-primary/20; }
+    </style>
+</head>
+
+<body class="bg-accent text-neutral-900 antialiased selection:bg-primary selection:text-white">
+
+    <header class="glass-nav">
+        <nav class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <a href="#home" class="font-bold text-xl tracking-tighter text-primary">FM<span class="text-neutral-400">.</span></a>
+            <ul class="hidden md:flex items-center gap-10 text-[10px] font-bold uppercase tracking-widest text-neutral-500">
+                <li><a class="hover:text-primary transition" href="#wins">01. Wins</a></li>
+                <li><a class="hover:text-primary transition" href="#work">02. Work</a></li>
+                <li><a class="hover:text-primary transition" href="#experience">03. Labs</a></li>
+                <li><a class="hover:text-primary transition" href="#contact">04. Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="min-h-screen flex flex-col justify-center px-6 pt-20">
+            <div class="max-w-7xl mx-auto w-full">
+                <span class="section-number">00 — Introduction</span>
+                <h1 class="display-xl mb-8">
+                    Francis <br>
+                    <span class="italic text-primary">Musau</span>.
+                </h1>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-end">
+                    <p class="text-xl md:text-2xl text-neutral-600 leading-relaxed max-w-xl">
+                        I build real-world systems in <span class="text-neutralDark font-medium underline decoration-primary/30">fintech</span>, 
+                        <span class="text-neutralDark font-medium underline decoration-primary/30">education</span>, and 
+                        <span class="text-neutralDark font-medium underline decoration-primary/30">operations</span>. 
+                        Hackathon winner & systems builder.
+                    </p>
+                    <div class="flex flex-col md:items-end gap-4">
+                        <a href="#work" class="bg-primary text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-neutralDark transition-colors inline-block w-fit">
+                            View Portfolio →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="wins" class="py-32 px-6 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <header class="mb-20">
+                    <span class="section-number">01 — Selected Wins</span>
+                    <h2 class="display-lg">Proof, not <span class="italic">promises</span>.</h2>
+                </header>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="p-10 bg-accent rounded-3xl card-hover">
+                        <span class="text-3xl mb-6 block">🥇</span>
+                        <p class="text-primary font-bold text-xs uppercase tracking-widest mb-2">2026 — 1st Place</p>
+                        <h3 class="text-2xl font-bold mb-4 text-neutralDark">Money in Motion</h3>
+                        <p class="text-gray-600 leading-relaxed">Built FlowCredit — a credit scoring system using M-Pesa (Daraja API) for agricultural groups.</p>
+                    </div>
+                    <div class="p-10 bg-accent rounded-3xl card-hover">
+                        <span class="text-3xl mb-6 block">🥉</span>
+                        <p class="text-primary font-bold text-xs uppercase tracking-widest mb-2">2026 — 3rd Place</p>
+                        <h3 class="text-2xl font-bold mb-4 text-neutralDark">Fix the Fest</h3>
+                        <p class="text-gray-600 leading-relaxed">Optimized event logistics, vendor coordination, and ticket flow for large-scale festivals.</p>
+                    </div>
+                    <div class="p-10 bg-accent rounded-3xl card-hover">
+                        <span class="text-3xl mb-6 block">◎</span>
+                        <p class="text-primary font-bold text-xs uppercase tracking-widest mb-2">Daystar University</p>
+                        <h3 class="text-2xl font-bold mb-4 text-neutralDark">750+ Students</h3>
+                        <p class="text-gray-600 leading-relaxed">Supported core systems and managed rollouts for the entire student body per semester.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="py-32 px-6">
+            <div class="max-w-7xl mx-auto">
+                <header class="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div>
+                        <span class="section-number">02 — Featured Work</span>
+                        <h2 class="display-lg">Things I've <span class="italic text-primary">built</span>.</h2>
+                    </div>
+                    <p class="text-gray-500 max-w-xs text-sm">Every project starts with a real-world problem and ships measurable impact.</p>
+                </header>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="group cursor-pointer" onclick="openModal('Reddit Automation', 'Python-based data scraper for marketing insights.')">
+                        <div class="aspect-video bg-white rounded-3xl overflow-hidden mb-6 border border-primary/5 shadow-sm">
+                            <img src="https://placehold.co/600x400?text=Reddit+Automation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Project">
+                        </div>
+                        <h3 class="text-2xl font-bold text-neutralDark">Reddit Marketing Automation</h3>
+                        <p class="text-gray-500 mt-2">Python · Pandas · BeautifulSoup</p>
+                    </div>
+                    <div class="group cursor-pointer">
+                        <div class="aspect-video bg-white rounded-3xl overflow-hidden mb-6 border border-primary/5 shadow-sm">
+                            <img src="https://placehold.co/600x400?text=Academia+Portal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Project">
+                        </div>
+                        <h3 class="text-2xl font-bold text-neutralDark">Academia Portal</h3>
+                        <p class="text-gray-500 mt-2">Java · Spring Boot · MySQL</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-32 px-6 bg-neutralDark text-accent">
+            <div class="max-w-7xl mx-auto">
+                <span class="section-number text-white/40">03 — Security Labs</span>
+                <h2 class="display-lg text-white mb-16">Systems <span class="italic text-primary">defense</span>.</h2>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition">
+                        <h3 class="font-bold text-xl mb-4">Traffic Analysis</h3>
+                        <p class="text-sm text-gray-400">Captured packets via Wireshark to detect abnormal traffic and exfiltration patterns.</p>
+                    </div>
+                    <div class="p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition">
+                        <h3 class="font-bold text-xl mb-4">SQL Injection</h3>
+                        <p class="text-sm text-gray-400">Mitigated vulnerabilities in PHP login systems using SQLMap and parameterized queries.</p>
+                    </div>
+                    <div class="p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition">
+                        <h3 class="font-bold text-xl mb-4">Digital Forensics</h3>
+                        <p class="text-sm text-gray-400">Recovered deleted data from corrupted drives using Autopsy and verified metadata.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-32 px-6">
+            <div class="max-w-7xl mx-auto text-center">
+                <span class="section-number">04 — Get In Touch</span>
+                <h2 class="display-lg mb-12">Let's build <span class="italic">something</span>.</h2>
+                
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="mailto:francisfrancs02@gmail.com" class="text-xl font-bold hover:text-primary transition underline decoration-primary/20 underline-offset-8">Email</a>
+                    <span class="text-gray-300">/</span>
+                    <a href="#" class="text-xl font-bold hover:text-primary transition underline decoration-primary/20 underline-offset-8">LinkedIn</a>
+                    <span class="text-gray-300">/</span>
+                    <a href="#" class="text-xl font-bold hover:text-primary transition underline decoration-primary/20 underline-offset-8">GitHub</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 px-6 border-t border-primary/5 text-center text-xs font-bold uppercase tracking-widest text-gray-400">
+        © <span id="year"></span> Muthama Francis Musau — Built with Intention.
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Simple scroll reveal effect
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("opacity-100");
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll("main section").forEach((section) => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

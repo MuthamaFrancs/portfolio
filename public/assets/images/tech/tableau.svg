@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Tableau">
+  <rect width="128" height="128" rx="16" fill="#E97627"/>
+  <path fill="#fff" d="M32 88V40h12v48H32zm22 0V56h12v32H54zm22 0V48h12v40H76zm22-32v32H86V56h12z"/>
+</svg>

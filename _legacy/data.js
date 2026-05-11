@@ -7,8 +7,8 @@ export const profile = {
     linkedin: "https://www.linkedin.com/in/muthama-francis-5b4b25210/",
     github: "https://github.com/MuthamaFrancs",
     githubUsername: "MuthamaFrancs",
-    profileImage: "assets/images/profile_hq.png",
-    bio: "I am a Full-stack software developer passionate about technology that solves real-world problems. With 3 years of experience, I specialize in Object Oriented Programming, Mobile Development, and Process Automation."
+    profileImage: "assets/images/profileyalast.jpeg",
+    bio: " I'm a full-stack developer passionate about technology that solves real-world problems. I also work with data analytics and enjoy building dependable products. My solutions range from different spaces from personal projects and hackathon-winning MVPs to systems currently scaling with real users."
 }
 
 export const projects = [
@@ -24,7 +24,7 @@ export const projects = [
   {
     id: 2,
     title: "Academia Portal",
-    category: "Web App",
+    category: "Mobile App",
     image: "assets/images/projet1.jpeg",
     description: "Student portal with issue tracking, notifications and training modules for university use.",
     tech: ["Java", "Spring Boot", "MySQL"],
